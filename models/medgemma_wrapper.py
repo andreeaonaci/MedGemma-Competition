@@ -2,102 +2,157 @@ import logging
 from typing import Dict, Any
 
 import torch
+from transformers import (
+    AutoProcessor,
+    AutoModelForVision2Seq,
+    BitsAndBytesConfig,
+)
 
 from diagnostics.reasoning import (
     build_diagnosis_prompt,
     enforce_json_schema,
 )
 
-
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
+
+MODEL_ID = "google/medgemma-4b-it"  # Change if needed
 
 
 class MedGemmaWrapper:
     """
-    Local MedGemma wrapper with:
+    Optimized for NVIDIA Quadro RTX 3000 (6GB VRAM)
 
+    - 4-bit quantization
     - Automatic CUDA detection
-    - Safe CPU fallback
-    - Structured prompting
+    - device_map="auto"
     - Strict JSON enforcement
-    - torch.no_grad() inference
     """
 
     def __init__(self, device: str = "cuda"):
         if torch.cuda.is_available():
-            self.device = torch.device("cuda")
+            self.device = "cuda"
             logger.info("CUDA detected. Using GPU.")
         else:
-            self.device = torch.device("cpu")
+            self.device = "cpu"
             logger.warning("CUDA not available. Falling back to CPU.")
 
         self.model = None
+        self.processor = None
 
     def load(self):
-        """
-        Load MedGemma model locally and move to correct device.
-        Actual loading implementation not included.
-        """
-        self.model = None
+        logger.info(f"Loading model: {MODEL_ID}")
 
-        if self.model is not None:
-            self.model.to(self.device)
-            self.model.eval()
+        self.processor = AutoProcessor.from_pretrained(
+            MODEL_ID,
+            trust_remote_code=True
+        )
 
-    def _move_to_device(self, tensor: torch.Tensor) -> torch.Tensor:
-        return tensor.to(self.device)
+        if self.device == "cuda":
+
+            bnb_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch.float16,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4",
+            )
+
+            self.model = AutoModelForVision2Seq.from_pretrained(
+                MODEL_ID,
+                quantization_config=bnb_config,
+                device_map="auto",
+                trust_remote_code=True
+            )
+
+        else:
+            self.model = AutoModelForVision2Seq.from_pretrained(
+                MODEL_ID,
+                torch_dtype=torch.float32,
+                device_map=None,
+                trust_remote_code=True
+            )
+            self.model.to("cpu")
+
+        self.model.eval()
+
+        logger.info("Model loaded successfully.")
 
     def generate_diagnosis(self, image, clinical_context: str) -> Dict[str, Any]:
-        """
-        Full diagnosis pipeline:
-
-        1. Build strict prompt
-        2. Run model inference
-        3. Enforce strict JSON schema
-        4. Return validated dictionary
-        """
-
         if self.model is None:
             raise RuntimeError("Model not loaded.")
-
-        image = self._move_to_device(image)
 
         prompt = build_diagnosis_prompt(clinical_context)
 
+        inputs = self.processor(
+            images=image,
+            text=prompt,
+            return_tensors="pt"
+        )
+
+        if self.device == "cuda":
+            inputs = {k: v.to("cuda") for k, v in inputs.items()}
+
         with torch.no_grad():
-            # Placeholder inference call
-            # Expected to return raw string output
-            raw_output = ""
+            output_ids = self.model.generate(
+                **inputs,
+                max_new_tokens=384,
+                do_sample=False,
+                temperature=0.0
+            )
 
-        validated_output = enforce_json_schema(raw_output)
+        raw_output = self.processor.batch_decode(
+            output_ids,
+            skip_special_tokens=True
+        )[0]
 
-        return validated_output
+        return enforce_json_schema(raw_output)
 
     def generate_comparison(self, text_a: str, text_b: str) -> Dict[str, Any]:
-        """
-        Comparison not structured yet.
-        """
         if self.model is None:
             raise RuntimeError("Model not loaded.")
 
-        with torch.no_grad():
-            raw_output = ""
+        prompt = f"""
+Compare two ophthalmology retinal reports.
 
-        return {"result": raw_output}
+Report A:
+{text_a}
+
+Report B:
+{text_b}
+
+Return strict JSON:
+{{
+  "comparison_result": "...",
+  "reasoning": "...",
+  "confidence_level": "low/medium/high"
+}}
+"""
+
+        inputs = self.processor(
+            text=prompt,
+            return_tensors="pt"
+        )
+
+        if self.device == "cuda":
+            inputs = {k: v.to("cuda") for k, v in inputs.items()}
+
+        with torch.no_grad():
+            output_ids = self.model.generate(
+                **inputs,
+                max_new_tokens=256,
+                do_sample=False,
+                temperature=0.0
+            )
+
+        raw_output = self.processor.batch_decode(
+            output_ids,
+            skip_special_tokens=True
+        )[0]
+
+        return enforce_json_schema(raw_output)
 
 
 def load_model(device: str = "cuda"):
     wrapper = MedGemmaWrapper(device=device)
     wrapper.load()
     return wrapper
-
-
-def generate_diagnosis(image, clinical_context: str) -> dict:
-    model = load_model()
-    return model.generate_diagnosis(image, clinical_context)
-
-
-def generate_comparison(text_a: str, text_b: str) -> dict:
-    model = load_model()
-    return model.generate_comparison(text_a, text_b)
