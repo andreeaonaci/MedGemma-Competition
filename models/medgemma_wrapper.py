@@ -1,9 +1,12 @@
 import logging
 from typing import Dict, Any
+from PIL import Image
+
 
 import torch
 from transformers import (
     AutoProcessor,
+    AutoModelForImageTextToText,
     AutoModelForVision2Seq,
     BitsAndBytesConfig,
 )
@@ -16,7 +19,7 @@ from diagnostics.reasoning import (
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-MODEL_ID = "google/medgemma-4b-it"  # Change if needed
+MODEL_ID = "google/medgemma-4b-it" 
 
 
 class MedGemmaWrapper:
@@ -57,15 +60,14 @@ class MedGemmaWrapper:
                 bnb_4bit_quant_type="nf4",
             )
 
-            self.model = AutoModelForVision2Seq.from_pretrained(
+            self.model = AutoModelForImageTextToText.from_pretrained(
                 MODEL_ID,
                 quantization_config=bnb_config,
                 device_map="auto",
                 trust_remote_code=True
             )
-
         else:
-            self.model = AutoModelForVision2Seq.from_pretrained(
+            self.model = AutoModelForImageTextToText.from_pretrained(
                 MODEL_ID,
                 torch_dtype=torch.float32,
                 device_map=None,
@@ -77,35 +79,39 @@ class MedGemmaWrapper:
 
         logger.info("Model loaded successfully.")
 
-    def generate_diagnosis(self, image, clinical_context: str) -> Dict[str, Any]:
+
+    def generate_diagnosis(self, image: Image.Image, clinical_context: str) -> Dict[str, Any]:
         if self.model is None:
             raise RuntimeError("Model not loaded.")
 
-        prompt = build_diagnosis_prompt(clinical_context)
+        messages = [
+            {"role": "system", "content": [{"type": "text", "text": "You are an expert ophthalmologist."}]},
+            {"role": "user", "content": [{"type": "text", "text": clinical_context},
+                                        {"type": "image", "image": image}]}
+        ]
 
-        inputs = self.processor(
-            images=image,
-            text=prompt,
+        inputs = self.processor.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            tokenize=True,
+            return_dict=True,
             return_tensors="pt"
-        )
+        ).to(self.model.device, dtype=torch.float16)
 
-        if self.device == "cuda":
-            inputs = {k: v.to("cuda") for k, v in inputs.items()}
+        input_len = inputs["input_ids"].shape[-1]
 
-        with torch.no_grad():
-            output_ids = self.model.generate(
+        with torch.inference_mode():
+            generation = self.model.generate(
                 **inputs,
                 max_new_tokens=384,
-                do_sample=False,
-                temperature=0.0
+                do_sample=False
             )
+            generation = generation[0][input_len:]
 
-        raw_output = self.processor.batch_decode(
-            output_ids,
-            skip_special_tokens=True
-        )[0]
+        raw_output = self.processor.decode(generation, skip_special_tokens=True)
 
         return enforce_json_schema(raw_output)
+
 
     def generate_comparison(self, text_a: str, text_b: str) -> Dict[str, Any]:
         if self.model is None:
@@ -156,3 +162,13 @@ def load_model(device: str = "cuda"):
     wrapper = MedGemmaWrapper(device=device)
     wrapper.load()
     return wrapper
+
+
+if __name__ == "__main__":
+    # Simple test
+    model = load_model()
+
+    dummy_image = torch.zeros((3, 224, 224))  # Dummy image tensor
+    clinical_context = "Patient with blurred vision and floaters."
+    diagnosis = model.generate_diagnosis(dummy_image, clinical_context)
+    print(diagnosis)

@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 from PIL import Image
 
-from models.medgemma_wrapper import load_model, generate_diagnosis
+from models.medgemma_wrapper import load_model
 from comparison import image_comparator
 from similarity import metrics
 from image_processing import operations
