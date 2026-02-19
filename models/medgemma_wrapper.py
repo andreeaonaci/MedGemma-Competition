@@ -1,18 +1,18 @@
 import logging
 from typing import Dict, Any
 from PIL import Image
-
+import re
 
 import torch
 from transformers import (
     AutoProcessor,
     AutoModelForImageTextToText,
-    AutoModelForVision2Seq,
+    
     BitsAndBytesConfig,
 )
 
 from diagnostics.reasoning import (
-    build_diagnosis_prompt,
+    
     enforce_json_schema,
 )
 
@@ -84,8 +84,19 @@ class MedGemmaWrapper:
         if self.model is None:
             raise RuntimeError("Model not loaded.")
 
+        # 1. Provide an exact JSON template in the system prompt
+        system_prompt = """You are an expert ophthalmologist.
+You MUST output your response STRICTLY as a raw JSON object matching this exact format, with no additional text, markdown, or explanation:
+{
+  "findings": "...",
+  "condition": "...",
+  "severity": "...",
+  "recommendations": "...",
+  "confidence": "high/medium/low"
+}"""
+
         messages = [
-            {"role": "system", "content": [{"type": "text", "text": "You are an expert ophthalmologist."}]},
+            {"role": "system", "content": [{"type": "text", "text": system_prompt}]},
             {"role": "user", "content": [{"type": "text", "text": clinical_context},
                                         {"type": "image", "image": image}]}
         ]
@@ -110,7 +121,15 @@ class MedGemmaWrapper:
 
         raw_output = self.processor.decode(generation, skip_special_tokens=True)
 
-        return enforce_json_schema(raw_output)
+        # 2. Force clean extraction of the JSON block using Regex
+        json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
+        if json_match:
+            clean_json_string = json_match.group(0)
+        else:
+            # Fallback in case the model failed completely
+            clean_json_string = raw_output 
+
+        return enforce_json_schema(clean_json_string)
 
 
     def generate_comparison(self, text_a: str, text_b: str) -> Dict[str, Any]:

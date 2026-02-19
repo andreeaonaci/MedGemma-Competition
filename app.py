@@ -50,8 +50,8 @@ with tabs[0]:
         else:
             try:
                 img = helpers.load_image(uploaded_image)
-                tensor = helpers.convert_to_tensor(img)
-                result = model.generate_diagnosis(tensor, clinical_context)
+                #tensor = helpers.convert_to_tensor(img)
+                result = model.generate_diagnosis(img,clinical_context)
                 st.subheader("Diagnosis Results")
                 st.json(result)
             except Exception as e:
@@ -138,8 +138,9 @@ with tabs[2]:
     canny_high = st.slider("Canny High Threshold", 0, 255, 150)
     brightness_val = st.slider("Brightness Adjustment", -100, 100, 0)
     contrast_val = st.slider("Contrast Adjustment", 0.1, 3.0, 1.0)
-    # rotate_angle = st.slider("Rotation Angle", -180, 180, 0)
-    # gaussian_ksize = st.slider("Gaussian Kernel Size", 1, 31, 3, step=2)
+    rotate_angle = st.slider("Rotation Angle", -180, 180, 0)
+    
+    gaussian_ksize = st.slider("Gaussian Kernel Size", 1, 31, 3, step=2)
 
     run_processing = st.button("Apply Operations")
 
