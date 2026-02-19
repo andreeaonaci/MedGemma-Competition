@@ -8,6 +8,8 @@ from comparison import image_comparator
 from similarity import metrics
 from image_processing import operations
 from utils import helpers
+from ai_comparison_view import render_comparison_page
+
 
 st.set_page_config(page_title="MedGemma Local Ophthalmology Assistant", layout="wide")
 
@@ -33,7 +35,7 @@ model = get_model()
 
 
 # --- Tabs ---
-tabs = st.tabs(["Diagnosis", "Comparison", "Image Processing"])
+tabs = st.tabs(["Diagnosis", "Comparison", "Image Processing", "AI Comparison between 2 images"])
 
 # ----------------- Diagnosis Tab -----------------
 with tabs[0]:
@@ -213,3 +215,8 @@ with tabs[2]:
 
             except Exception as e:
                 st.error(f"Error during image processing: {e}")
+
+
+###Pentru pagina de comparatie vizuala intre 2 imagini (Tab 3) - combinare spatiala si analiza directa a diferentei intre doua imagini
+with tabs[3]:
+    render_comparison_page(model)
