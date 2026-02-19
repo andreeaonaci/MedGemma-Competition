@@ -53,7 +53,35 @@ with tabs[0]:
                 #tensor = helpers.convert_to_tensor(img)
                 result = model.generate_diagnosis(img,clinical_context)
                 st.subheader("Diagnosis Results")
-                st.json(result)
+               # Safe extraction of dictionary data
+                condition = result.get("condition", "Unspecified").upper()
+                severity = str(result.get("severity", "N/A")).title()
+                confidence = str(result.get("confidence", "N/A")).upper()
+                
+                # Handling findings (checking if the model returned a list or string)
+                findings = result.get("findings", "No detailed findings available.")
+                if isinstance(findings, list):
+                    findings = "\n".join([f"- {f}" for f in findings])
+                    
+                # Handling recommendations (checking if the model returned a list or string)
+                recommendations = result.get("recommendations", "No specific recommendations.")
+                if isinstance(recommendations, list):
+                    recommendations = "\n".join([f"- {r}" for r in recommendations])
+
+                # Visual display of the primary diagnosis
+                st.success(f"**Detected Condition:** {condition}")
+
+                # Using metrics for short parameters
+                col1, col2 = st.columns(2)
+                col1.metric("Severity Level", severity)
+                col2.metric("AI Confidence", confidence)
+
+                # Displaying textual details in colored panels
+                st.markdown("### Clinical Findings")
+                st.info(findings)
+
+                st.markdown("### Recommendations")
+                st.warning(recommendations)
             except Exception as e:
                 st.error(f"Error during diagnosis: {e}")
 

@@ -145,7 +145,7 @@ Report A:
 Report B:
 {text_b}
 
-Return strict JSON:
+You MUST output your response STRICTLY as a raw JSON object matching this exact format, with no additional text or markdown:
 {{
   "comparison_result": "...",
   "reasoning": "...",
@@ -161,12 +161,11 @@ Return strict JSON:
         if self.device == "cuda":
             inputs = {k: v.to("cuda") for k, v in inputs.items()}
 
-        with torch.no_grad():
+        with torch.inference_mode():
             output_ids = self.model.generate(
                 **inputs,
                 max_new_tokens=256,
-                do_sample=False,
-                temperature=0.0
+                do_sample=False
             )
 
         raw_output = self.processor.batch_decode(
@@ -174,7 +173,16 @@ Return strict JSON:
             skip_special_tokens=True
         )[0]
 
-        return enforce_json_schema(raw_output)
+        # Extragere curată cu Regex, ignorând textul rezidual
+        import json
+        json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
+        clean_json_string = json_match.group(0) if json_match else raw_output
+
+        # Parsare directă și independentă de diagnoză
+        try:
+            return json.loads(clean_json_string)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Model output for comparison is not valid JSON: {clean_json_string}") from e
 
 
 def load_model(device: str = "cuda"):
