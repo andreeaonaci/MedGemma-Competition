@@ -173,37 +173,56 @@ elif st.session_state.current_page == "Image Processing":
             try:
                 img1 = np.array(helpers.load_image(img_file1))
                 img2 = np.array(helpers.load_image(img_file2)) if img_file2 else None
+                
+                # --- Capturăm detaliile operațiilor pentru a le oferi ca și context AI-ului ---
+                st.session_state.original_buffer = img1  # Păstrăm imaginea originală pentru referință
+                ops_details = []
 
                 def apply_ops(img):
                     for op in selected_ops:
                         if op == "Multi Threshold":
                             thresholds = [int(x.strip()) for x in multi_thresh_values.split(",") if x.strip()]
                             img = ops[op](img, thresholds)
+                            ops_details.append(f"Multi Threshold({multi_thresh_values})")
                         elif op == "Canny Edges":
                             img = ops[op](img, canny_low, canny_high)
+                            ops_details.append(f"Canny Edges(Low:{canny_low}, High:{canny_high})")
                         elif op == "Brightness":
                             img = ops[op](img, brightness_val)
+                            ops_details.append(f"Brightness({brightness_val})")
                         elif op == "Contrast":
                             img = ops[op](img, contrast_val)
+                            ops_details.append(f"Contrast({contrast_val})")
                         else:
                             img = ops[op](img)
+                            ops_details.append(op)
                     return img
 
                 st.session_state.processed_buffer = apply_ops(img1)
+                
+                # Salvăm string-ul de context in buffer
+                st.session_state.processed_buffer_ops = ", ".join(ops_details) if ops_details else "No operations applied."
                 
                 if img2 is not None:
                     st.session_state.processed_buffer_img2 = apply_ops(img2) if sync_mode else img2
             except Exception as e:
                 st.error(f"Error: {e}")
 
-    # AFIȘARE REZULTATE ȘI BUTON TRANSFER (în afara blocului run_processing pentru persistență)
+    # AFIȘARE REZULTATE ȘI BUTON TRANSFER (Unic)
     if st.session_state.processed_buffer is not None:
         st.subheader("Processed Image 1")
         st.image(st.session_state.processed_buffer, use_container_width=True)
+        
+        # Arătăm utilizatorului ce metadate vor fi transmise
+        st.caption(f"🔧 **Metadata to transfer:** {st.session_state.get('processed_buffer_ops', 'None')}")
 
-        # --- BUTONUL DE REDIRECTIONARE ---
-        if st.button("🚀 Send to Research Audit & Analyze", type="primary"):
+        # --- BUTONUL DE REDIRECȚIONARE ---
+        if st.button("🚀 Send to Research Audit & Analyze", type="primary", key="transfer_btn_audit_1"):
             st.session_state.transferred_image = st.session_state.processed_buffer
+            # Transferăm și metadatele
+            st.session_state.transferred_ops = st.session_state.get('processed_buffer_ops', '')
+            st.session_state.transferred_original=st.session_state.get('original_buffer', None)
+
             st.session_state.current_page = "Research Audit"
             st.rerun()
 
