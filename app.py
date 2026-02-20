@@ -14,14 +14,14 @@ from research_audit_view import render_research_audit_page
 # 1. Configurare obligatorie pe prima linie
 st.set_page_config(page_title="MedGemma Local Ophthalmology Assistant", layout="wide")
 
-# --- LOGICA DE NAVIGARE SI TRANSFER (Integrată) ---
+# --- LOGICA DE NAVIGARE SI TRANSFER (Integrata) ---
 if 'current_page' not in st.session_state:
     st.session_state.current_page = "Diagnosis"
 
 if 'transferred_image' not in st.session_state:
     st.session_state.transferred_image = None
 
-# Buffer pentru a păstra imaginea procesată vizibilă și după procesare
+# Buffer pentru a pastra imaginea procesata vizibila si dupa procesare
 if 'processed_buffer' not in st.session_state:
     st.session_state.processed_buffer = None
 
@@ -44,19 +44,22 @@ def get_model():
 model = get_model()
 
 # --- SIDEBAR NAVIGATION ---
+# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
-    st.header("📍 Navigation")
+    st.header("Navigation")
     page_options = ["Diagnosis", "Comparison", "Image Processing", "AI Comparison between 2 images", "Research Audit"]
     
-    selection = st.radio(
-        "Go to:", 
-        page_options, 
-        index=page_options.index(st.session_state.current_page)
-    )
+    st.write("---")
     
-    if selection != st.session_state.current_page:
-        st.session_state.current_page = selection
-        st.rerun()
+    # Generam butoane pe toata latimea pentru fiecare pagina
+    for page in page_options:
+        # Paginile inactive au stil normal, pagina activa este evidentiata
+        btn_type = "primary" if st.session_state.current_page == page else "secondary"
+        
+        if st.button(page, type=btn_type, use_container_width=True):
+            if st.session_state.current_page != page:
+                st.session_state.current_page = page
+                st.rerun()
 
 # ----------------- Pagina: Diagnosis -----------------
 if st.session_state.current_page == "Diagnosis":
@@ -174,8 +177,8 @@ elif st.session_state.current_page == "Image Processing":
                 img1 = np.array(helpers.load_image(img_file1))
                 img2 = np.array(helpers.load_image(img_file2)) if img_file2 else None
                 
-                # --- Capturăm detaliile operațiilor pentru a le oferi ca și context AI-ului ---
-                st.session_state.original_buffer = img1  # Păstrăm imaginea originală pentru referință
+                # --- Capturam detaliile operatiilor pentru a le oferi ca si context AI-ului ---
+                st.session_state.original_buffer = img1  # Pastram imaginea originala pentru referinta
                 ops_details = []
 
                 def apply_ops(img):
@@ -200,7 +203,7 @@ elif st.session_state.current_page == "Image Processing":
 
                 st.session_state.processed_buffer = apply_ops(img1)
                 
-                # Salvăm string-ul de context in buffer
+                # Salvam string-ul de context in buffer
                 st.session_state.processed_buffer_ops = ", ".join(ops_details) if ops_details else "No operations applied."
                 
                 if img2 is not None:
@@ -208,18 +211,18 @@ elif st.session_state.current_page == "Image Processing":
             except Exception as e:
                 st.error(f"Error: {e}")
 
-    # AFIȘARE REZULTATE ȘI BUTON TRANSFER (Unic)
+    # AFISARE REZULTATE SI BUTON TRANSFER (Unic)
     if st.session_state.processed_buffer is not None:
         st.subheader("Processed Image 1")
         st.image(st.session_state.processed_buffer, use_container_width=True)
         
-        # Arătăm utilizatorului ce metadate vor fi transmise
-        st.caption(f"🔧 **Metadata to transfer:** {st.session_state.get('processed_buffer_ops', 'None')}")
+        # Aratam utilizatorului ce metadate vor fi transmise
+        st.caption(f"Metadata to transfer: {st.session_state.get('processed_buffer_ops', 'None')}")
 
-        # --- BUTONUL DE REDIRECȚIONARE ---
-        if st.button("🚀 Send to Research Audit & Analyze", type="primary", key="transfer_btn_audit_1"):
+        # --- BUTONUL DE REDIRECTIONARE ---
+        if st.button("Send to Research Audit & Analyze", type="primary", key="transfer_btn_audit_1"):
             st.session_state.transferred_image = st.session_state.processed_buffer
-            # Transferăm și metadatele
+            # Transferam si metadatele
             st.session_state.transferred_ops = st.session_state.get('processed_buffer_ops', '')
             st.session_state.transferred_original=st.session_state.get('original_buffer', None)
 

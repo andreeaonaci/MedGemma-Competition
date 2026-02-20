@@ -4,3 +4,4 @@ Timestamp,Image_Name,Doctor_Diagnosis,AI_Condition,AI_Severity,AI_Confidence
 2026-02-20 11:14:25,fundus_0002.png,GLAUCOMA,NO SIGNIFICANT FINDINGS.,Normal,HIGH
 2026-02-20 14:46:46,processed_transfer.png,DIABETIC RETINOPATHY,NO SIGNIFICANT FINDINGS.,Normal,HIGH
 2026-02-20 16:43:06,composite_transfer.png,DIABETIC RETINOPATHY,ROUTINE EYE EXAM,Normal,HIGH
+2026-02-20 16:55:39,composite_transfer.png,DIABETIC RETINOPATHY,NORMAL,Normal,HIGH
