@@ -10,6 +10,9 @@ from PIL import Image
 import numpy as np
 from utils import helpers
 
+# IMPORTUL UNIC PENTRU VOCABULAR
+from diagnostics.reasoning import ALLOWED_CONDITIONS
+
 # Functie utilitara pentru a lipi doua imagini stanga-dreapta
 def combine_side_by_side(img1, img2):
     i1 = Image.fromarray(img1) if isinstance(img1, np.ndarray) else img1
@@ -46,16 +49,14 @@ def render_research_audit_page(model):
         image_to_analyze = None
         img_name = "unknown_image.png"
         processing_metadata = "" 
-        is_composite_image = False # Steag pentru a sti cum sa setam promptul
+        is_composite_image = False 
 
         with col1:
             st.markdown("### Diagnostic Imagery")
             
-            # Verificam daca avem date transferate
             transferred_img = st.session_state.get('transferred_image', None)
             transferred_orig = st.session_state.get('transferred_original', None)
             
-            # CAZUL 1: Avem imagini din Lab-ul de procesare
             if transferred_img is not None and transferred_orig is not None:
                 st.success("Original & Processed images loaded from Lab.")
                 processing_metadata = st.session_state.get('transferred_ops', '')
@@ -63,14 +64,12 @@ def render_research_audit_page(model):
                 if processing_metadata:
                     st.info(f"**Applied Filters:** {processing_metadata}")
                 
-                # Afisam ambele imagini medicului
                 prev_col1, prev_col2 = st.columns(2)
                 with prev_col1:
                     st.image(transferred_orig, caption="Original", use_container_width=True)
                 with prev_col2:
                     st.image(transferred_img, caption="Processed", use_container_width=True)
                 
-                # Lipim imaginile in fundal pentru AI
                 image_to_analyze = combine_side_by_side(transferred_orig, transferred_img)
                 img_name = "composite_transfer.png"
                 is_composite_image = True
@@ -81,7 +80,6 @@ def render_research_audit_page(model):
                     st.session_state['transferred_ops'] = None
                     st.rerun()
             
-            # CAZUL 2: Incarcare manuala clasica (fara procesare)
             else:
                 uploaded_file = st.file_uploader("Upload Retinal Image", type=["png", "jpg", "jpeg"], key="audit_img")
                 if uploaded_file is not None:
@@ -91,9 +89,11 @@ def render_research_audit_page(model):
         
         with col2:
             st.markdown("### Clinical Ground Truth")
+            
+            # Utilizam variabila importata
             doctor_diagnosis = st.selectbox(
                 "Select human diagnosis (Ground Truth):",
-                ["DIABETIC RETINOPATHY", "GLAUCOMA", "AGE-RELATED MACULAR DEGENERATION", "HEALTHY", "OTHER"],
+                ALLOWED_CONDITIONS,
                 key="audit_doc_diag"
             )
             
@@ -119,13 +119,17 @@ def render_research_audit_page(model):
                         
                         result = model.generate_diagnosis(image_to_analyze, final_ai_context)
                     
-                    condition = result.get("condition", "Unspecified").upper()
+                    # Curatam output-ul modelului
+                    condition = str(result.get("condition", "Unspecified")).upper().strip()
                     severity = str(result.get("severity", "N/A")).title()
                     confidence = str(result.get("confidence", "N/A")).upper()
                     
+                    # Fallback logic folosind variabila importata
+                    if condition not in ALLOWED_CONDITIONS:
+                        condition = "OTHER"
+                    
                     st.success(f"**AI Diagnosis:** {condition} | **Severity:** {severity} | **Confidence:** {confidence}")
                     
-                    # Salvare in CSV
                     log_file = "clinical_audit_log.csv"
                     file_exists = os.path.isfile(log_file)
                     
