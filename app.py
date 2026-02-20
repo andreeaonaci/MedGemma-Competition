@@ -13,7 +13,6 @@ from ai_comparison_view import render_comparison_page
 from research_audit_view import render_research_audit_page
 
 
-
 st.set_page_config(page_title="MedGemma Local Ophthalmology Assistant", layout="wide")
 
 st.title("MedGemma Ophthalmology Diagnostic Assistant (Local)")
