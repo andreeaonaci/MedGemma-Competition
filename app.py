@@ -9,11 +9,21 @@ from similarity import metrics
 from image_processing import operations
 from utils import helpers
 from ai_comparison_view import render_comparison_page
-
 from research_audit_view import render_research_audit_page
 
-
+# 1. Configurare obligatorie pe prima linie
 st.set_page_config(page_title="MedGemma Local Ophthalmology Assistant", layout="wide")
+
+# --- LOGICA DE NAVIGARE SI TRANSFER (Integrată) ---
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = "Diagnosis"
+
+if 'transferred_image' not in st.session_state:
+    st.session_state.transferred_image = None
+
+# Buffer pentru a păstra imaginea procesată vizibilă și după procesare
+if 'processed_buffer' not in st.session_state:
+    st.session_state.processed_buffer = None
 
 st.title("MedGemma Ophthalmology Diagnostic Assistant (Local)")
 st.info(
@@ -21,7 +31,6 @@ st.info(
     "Not a certified medical device\n"
     "Does not replace clinical judgment"
 )
-
 
 # --- Load model once ---
 @st.cache_resource
@@ -32,15 +41,25 @@ def get_model():
         st.error(f"Failed to load model: {e}")
         return None
 
-
 model = get_model()
 
+# --- SIDEBAR NAVIGATION ---
+with st.sidebar:
+    st.header("📍 Navigation")
+    page_options = ["Diagnosis", "Comparison", "Image Processing", "AI Comparison between 2 images", "Research Audit"]
+    
+    selection = st.radio(
+        "Go to:", 
+        page_options, 
+        index=page_options.index(st.session_state.current_page)
+    )
+    
+    if selection != st.session_state.current_page:
+        st.session_state.current_page = selection
+        st.rerun()
 
-# --- Tabs ---
-tabs = st.tabs(["Diagnosis", "Comparison", "Image Processing", "AI Comparison between 2 images","Research Audit"])
-
-# ----------------- Diagnosis Tab -----------------
-with tabs[0]:
+# ----------------- Pagina: Diagnosis -----------------
+if st.session_state.current_page == "Diagnosis":
     st.header("Diagnosis")
     uploaded_image = st.file_uploader("Upload Retinal Fundus Image", type=["png", "jpg", "jpeg"])
     clinical_context = st.text_area("Clinical Context")
@@ -54,44 +73,34 @@ with tabs[0]:
         else:
             try:
                 img = helpers.load_image(uploaded_image)
-                #tensor = helpers.convert_to_tensor(img)
-                result = model.generate_diagnosis(img,clinical_context)
+                result = model.generate_diagnosis(img, clinical_context)
                 st.subheader("Diagnosis Results")
-               # Safe extraction of dictionary data
                 condition = result.get("condition", "Unspecified").upper()
                 severity = str(result.get("severity", "N/A")).title()
                 confidence = str(result.get("confidence", "N/A")).upper()
                 
-                # Handling findings (checking if the model returned a list or string)
                 findings = result.get("findings", "No detailed findings available.")
                 if isinstance(findings, list):
                     findings = "\n".join([f"- {f}" for f in findings])
-                    
-                # Handling recommendations (checking if the model returned a list or string)
+                
                 recommendations = result.get("recommendations", "No specific recommendations.")
                 if isinstance(recommendations, list):
                     recommendations = "\n".join([f"- {r}" for r in recommendations])
 
-                # Visual display of the primary diagnosis
                 st.success(f"**Detected Condition:** {condition}")
-
-                # Using metrics for short parameters
                 col1, col2 = st.columns(2)
                 col1.metric("Severity Level", severity)
                 col2.metric("AI Confidence", confidence)
 
-                # Displaying textual details in colored panels
                 st.markdown("### Clinical Findings")
                 st.info(findings)
-
                 st.markdown("### Recommendations")
                 st.warning(recommendations)
             except Exception as e:
                 st.error(f"Error during diagnosis: {e}")
 
-
-# ----------------- Comparison Tab -----------------
-with tabs[1]:
+# ----------------- Pagina: Comparison -----------------
+elif st.session_state.current_page == "Comparison":
     st.header("Comparison")
     col1, col2 = st.columns(2)
     with col1:
@@ -111,31 +120,22 @@ with tabs[1]:
                 img_b = helpers.load_image(image_b_file)
                 np_a = np.array(img_a)
                 np_b = np.array(img_b)
-
-                # Align images
                 aligned_a, aligned_b = image_comparator.align_images(np_a, np_b)
-                # Difference map & heatmap
                 diff_map = image_comparator.compute_difference_map(aligned_a, aligned_b)
                 heatmap = image_comparator.generate_heatmap_overlay(aligned_a, diff_map)
-                # Similarity
                 score = metrics.compute_similarity(aligned_a, aligned_b, sim_metric)
 
                 st.subheader("Similarity Score")
                 st.write(f"{sim_metric}: {score:.4f}")
-
-                st.subheader("Aligned Images")
                 col1, col2 = st.columns(2)
-                col1.image(aligned_a, caption="Aligned Image A", use_column_width=True)
-                col2.image(aligned_b, caption="Aligned Image B", use_column_width=True)
-
-                st.subheader("Difference Heatmap")
-                st.image(heatmap, caption="Heatmap Overlay", use_column_width=True)
+                col1.image(aligned_a, caption="Aligned Image A", use_container_width=True)
+                col2.image(aligned_b, caption="Aligned Image B", use_container_width=True)
+                st.image(heatmap, caption="Difference Heatmap", use_container_width=True)
             except Exception as e:
                 st.error(f"Error during comparison: {e}")
 
-
-# ----------------- Image Processing Tab -----------------
-with tabs[2]:
+# ----------------- Pagina: Image Processing -----------------
+elif st.session_state.current_page == "Image Processing":
     st.header("Image Processing")
     col1, col2 = st.columns(2)
     with col1:
@@ -143,9 +143,8 @@ with tabs[2]:
     with col2:
         img_file2 = st.file_uploader("Upload Image 2 (optional)", type=["png", "jpg", "jpeg"], key="proc2")
 
-    sync_mode = st.checkbox("Synchronized Mode (apply operations to both images)")
-
-    # Operation selection
+    sync_mode = st.checkbox("Synchronized Mode")
+    
     ops = {
         "Otsu Threshold": operations.otsu_threshold,
         "Multi Threshold": operations.multi_threshold,
@@ -155,30 +154,21 @@ with tabs[2]:
         "CLAHE": operations.clahe_equalization,
         "Brightness": operations.adjust_brightness,
         "Contrast": operations.adjust_contrast,
-        # "Rotate": operations.rotate_image,
-        # "Gaussian Blur": operations.gaussian_blur,
     }
 
-    selected_ops = []
-    for op_name in ops.keys():
-        if st.checkbox(op_name):
-            selected_ops.append(op_name)
-
-    # Parameter sliders
-    multi_thresh_values = st.text_input("Multi Thresholds (comma-separated)", value="50,100,150")
-    canny_low = st.slider("Canny Low Threshold", 0, 255, 50)
-    canny_high = st.slider("Canny High Threshold", 0, 255, 150)
-    brightness_val = st.slider("Brightness Adjustment", -100, 100, 0)
-    contrast_val = st.slider("Contrast Adjustment", 0.1, 3.0, 1.0)
-    rotate_angle = st.slider("Rotation Angle", -180, 180, 0)
-    
-    gaussian_ksize = st.slider("Gaussian Kernel Size", 1, 31, 3, step=2)
+    selected_ops = [name for name in ops.keys() if st.checkbox(name)]
+    multi_thresh_values = st.text_input("Multi Thresholds", value="50,100,150")
+    canny_low = st.slider("Canny Low", 0, 255, 50)
+    canny_high = st.slider("Canny High", 0, 255, 150)
+    brightness_val = st.slider("Brightness", -100, 100, 0)
+    contrast_val = st.slider("Contrast", 0.1, 3.0, 1.0)
 
     run_processing = st.button("Apply Operations")
 
+    # Logica de procesare
     if run_processing:
         if img_file1 is None:
-            st.warning("Please upload at least one image.")
+            st.warning("Please upload an image.")
         else:
             try:
                 img1 = np.array(helpers.load_image(img_file1))
@@ -195,34 +185,36 @@ with tabs[2]:
                             img = ops[op](img, brightness_val)
                         elif op == "Contrast":
                             img = ops[op](img, contrast_val)
-                        elif op == "Rotate":
-                            img = ops[op](img, rotate_angle)
-                        elif op == "Gaussian Blur":
-                            img = ops[op](img, gaussian_ksize)
                         else:
                             img = ops[op](img)
                     return img
 
-                proc_img1 = apply_ops(img1)
-                st.subheader("Processed Image 1")
-                st.image(proc_img1, use_column_width=True)
-
+                st.session_state.processed_buffer = apply_ops(img1)
+                
                 if img2 is not None:
-                    if sync_mode:
-                        proc_img2 = apply_ops(img2)
-                    else:
-                        proc_img2 = img2
-                    st.subheader("Image 2")
-                    st.image(proc_img2, use_column_width=True)
-
+                    st.session_state.processed_buffer_img2 = apply_ops(img2) if sync_mode else img2
             except Exception as e:
-                st.error(f"Error during image processing: {e}")
+                st.error(f"Error: {e}")
 
+    # AFIȘARE REZULTATE ȘI BUTON TRANSFER (în afara blocului run_processing pentru persistență)
+    if st.session_state.processed_buffer is not None:
+        st.subheader("Processed Image 1")
+        st.image(st.session_state.processed_buffer, use_container_width=True)
 
-###Pentru pagina de comparatie vizuala intre 2 imagini (Tab 3) - combinare spatiala si analiza directa a diferentei intre doua imagini
-with tabs[3]:
+        # --- BUTONUL DE REDIRECTIONARE ---
+        if st.button("🚀 Send to Research Audit & Analyze", type="primary"):
+            st.session_state.transferred_image = st.session_state.processed_buffer
+            st.session_state.current_page = "Research Audit"
+            st.rerun()
+
+        if img_file2 and 'processed_buffer_img2' in st.session_state:
+            st.subheader("Image 2")
+            st.image(st.session_state.processed_buffer_img2, use_container_width=True)
+
+# ----------------- Pagina: AI Comparison -----------------
+elif st.session_state.current_page == "AI Comparison between 2 images":
     render_comparison_page(model)
 
-    # ----------------- Research Audit Tab -----------------
-with tabs[4]:
+# ----------------- Pagina: Research Audit -----------------
+elif st.session_state.current_page == "Research Audit":
     render_research_audit_page(model)
