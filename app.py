@@ -3,7 +3,10 @@ import numpy as np
 import cv2
 from PIL import Image
 
-from models.medgemma_wrapper import load_model
+# IMPORT NOU: Aducem pagina de chat
+from diagnostic_chat_view import render_diagnostic_chat_page
+
+# Importurile vechi raman pentru celelalte functionalitati
 from comparison import image_comparator
 from similarity import metrics
 from image_processing import operations
@@ -14,14 +17,13 @@ from research_audit_view import render_research_audit_page
 # 1. Configurare obligatorie pe prima linie
 st.set_page_config(page_title="MedGemma Local Ophthalmology Assistant", layout="wide")
 
-# --- LOGICA DE NAVIGARE SI TRANSFER (Integrata) ---
+# --- LOGICA DE NAVIGARE SI TRANSFER ---
 if 'current_page' not in st.session_state:
     st.session_state.current_page = "Diagnosis"
 
 if 'transferred_image' not in st.session_state:
     st.session_state.transferred_image = None
 
-# Buffer pentru a pastra imaginea procesata vizibila si dupa procesare
 if 'processed_buffer' not in st.session_state:
     st.session_state.processed_buffer = None
 
@@ -32,18 +34,11 @@ st.info(
     "Does not replace clinical judgment"
 )
 
-# --- Load model once ---
-@st.cache_resource
-def get_model():
-    try:
-        return load_model()
-    except Exception as e:
-        st.error(f"Failed to load model: {e}")
-        return None
+# --- ELIMINAREA MODELULUI LOCAL ---
+# Modelul este acum rulat de serverul FastAPI in fundal.
+# Setam model=None pentru a nu "sparge" tab-urile vechi care il asteptau ca parametru.
+model = None 
 
-model = get_model()
-
-# --- SIDEBAR NAVIGATION ---
 # --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     st.header("Navigation")
@@ -51,9 +46,7 @@ with st.sidebar:
     
     st.write("---")
     
-    # Generam butoane pe toata latimea pentru fiecare pagina
     for page in page_options:
-        # Paginile inactive au stil normal, pagina activa este evidentiata
         btn_type = "primary" if st.session_state.current_page == page else "secondary"
         
         if st.button(page, type=btn_type, use_container_width=True):
@@ -61,46 +54,10 @@ with st.sidebar:
                 st.session_state.current_page = page
                 st.rerun()
 
-# ----------------- Pagina: Diagnosis -----------------
+# ----------------- Pagina: Diagnosis (ACUM ESTE CHAT INTERACTIV) -----------------
 if st.session_state.current_page == "Diagnosis":
-    st.header("Diagnosis")
-    uploaded_image = st.file_uploader("Upload Retinal Fundus Image", type=["png", "jpg", "jpeg"])
-    clinical_context = st.text_area("Clinical Context")
-    run_button = st.button("Generate Diagnosis")
-
-    if run_button:
-        if uploaded_image is None or not clinical_context.strip():
-            st.warning("Please provide image and clinical context.")
-        elif model is None:
-            st.error("Model not loaded.")
-        else:
-            try:
-                img = helpers.load_image(uploaded_image)
-                result = model.generate_diagnosis(img, clinical_context)
-                st.subheader("Diagnosis Results")
-                condition = result.get("condition", "Unspecified").upper()
-                severity = str(result.get("severity", "N/A")).title()
-                confidence = str(result.get("confidence", "N/A")).upper()
-                
-                findings = result.get("findings", "No detailed findings available.")
-                if isinstance(findings, list):
-                    findings = "\n".join([f"- {f}" for f in findings])
-                
-                recommendations = result.get("recommendations", "No specific recommendations.")
-                if isinstance(recommendations, list):
-                    recommendations = "\n".join([f"- {r}" for r in recommendations])
-
-                st.success(f"**Detected Condition:** {condition}")
-                col1, col2 = st.columns(2)
-                col1.metric("Severity Level", severity)
-                col2.metric("AI Confidence", confidence)
-
-                st.markdown("### Clinical Findings")
-                st.info(findings)
-                st.markdown("### Recommendations")
-                st.warning(recommendations)
-            except Exception as e:
-                st.error(f"Error during diagnosis: {e}")
+    # Aici apelam noua noastra functie care comunica cu API-ul
+    render_diagnostic_chat_page()
 
 # ----------------- Pagina: Comparison -----------------
 elif st.session_state.current_page == "Comparison":
@@ -168,7 +125,6 @@ elif st.session_state.current_page == "Image Processing":
 
     run_processing = st.button("Apply Operations")
 
-    # Logica de procesare
     if run_processing:
         if img_file1 is None:
             st.warning("Please upload an image.")
@@ -177,8 +133,7 @@ elif st.session_state.current_page == "Image Processing":
                 img1 = np.array(helpers.load_image(img_file1))
                 img2 = np.array(helpers.load_image(img_file2)) if img_file2 else None
                 
-                # --- Capturam detaliile operatiilor pentru a le oferi ca si context AI-ului ---
-                st.session_state.original_buffer = img1  # Pastram imaginea originala pentru referinta
+                st.session_state.original_buffer = img1  
                 ops_details = []
 
                 def apply_ops(img):
@@ -202,8 +157,6 @@ elif st.session_state.current_page == "Image Processing":
                     return img
 
                 st.session_state.processed_buffer = apply_ops(img1)
-                
-                # Salvam string-ul de context in buffer
                 st.session_state.processed_buffer_ops = ", ".join(ops_details) if ops_details else "No operations applied."
                 
                 if img2 is not None:
@@ -211,18 +164,13 @@ elif st.session_state.current_page == "Image Processing":
             except Exception as e:
                 st.error(f"Error: {e}")
 
-    # AFISARE REZULTATE SI BUTON TRANSFER (Unic)
     if st.session_state.processed_buffer is not None:
         st.subheader("Processed Image 1")
         st.image(st.session_state.processed_buffer, use_container_width=True)
-        
-        # Aratam utilizatorului ce metadate vor fi transmise
         st.caption(f"Metadata to transfer: {st.session_state.get('processed_buffer_ops', 'None')}")
 
-        # --- BUTONUL DE REDIRECTIONARE ---
         if st.button("Send to Research Audit & Analyze", type="primary", key="transfer_btn_audit_1"):
             st.session_state.transferred_image = st.session_state.processed_buffer
-            # Transferam si metadatele
             st.session_state.transferred_ops = st.session_state.get('processed_buffer_ops', '')
             st.session_state.transferred_original=st.session_state.get('original_buffer', None)
 
