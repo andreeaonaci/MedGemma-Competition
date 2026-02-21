@@ -55,42 +55,30 @@ REQUIRED_KEYS = {
 
 def build_diagnosis_prompt(clinical_context: str) -> str:
     """
-    Construct a strict ophthalmology diagnostic prompt.
-
-    Constraints:
-    - Limit scope to predefined retinal conditions only.
-    - Force structured reasoning.
-    - Force strictly valid JSON output.
-    - No additional commentary allowed.
+    Construct a strict ophthalmology diagnostic prompt using Directed Chain-of-Thought.
     """
     allowed = ", ".join(ALLOWED_CONDITIONS)
 
     prompt = f"""
-You are an ophthalmology diagnostic assistant.
+You are an expert ophthalmology diagnostic AI. 
 
-You are strictly limited to diagnosing ONLY the following conditions:
+CRITICAL INSTRUCTION: You MUST assume this retinal image contains subtle pathology (e.g., microaneurysms, drusen, abnormal cupping, hemorrhages) unless you can definitively prove otherwise. Do NOT default to "HEALTHY". 
+
+You are strictly limited to diagnosing ONLY from the following conditions:
 {allowed}
 
-You must:
-1. Analyze retinal fundus image features.
-2. Reason step by step internally.
-3. Select the most likely condition from the allowed list ONLY. If the condition is missing, output "OTHER".
-4. Assign severity: mild, moderate, severe, or N/A.
-5. Provide structured findings.
-6. Provide clinical recommendations.
-7. Provide confidence score between 0 and 1.
-
-You MUST return ONLY valid JSON.
-No markdown.
-No explanation.
-No extra text.
-No commentary.
+MANDATORY PROTOCOL:
+1. SCAN the macula for drusen or exudates.
+2. SCAN the vascular network for dot-blot hemorrhages or microaneurysms.
+3. SCAN the optic disc for abnormal cup-to-disc ratio or pallor.
+4. If ANY of the above are found, select the exact specific condition from the list.
+5. You may ONLY output "HEALTHY" if you have rigorously scanned all three areas and found zero abnormalities. If you are unsure, default to "OTHER" or the closest matching pathology, NOT "HEALTHY".
 
 JSON schema:
 {{
-    "condition": "<one of allowed conditions>",
+    "condition": "<exact string from allowed list>",
     "severity": "<mild|moderate|severe|N/A>",
-    "confidence": <float 0-1>,
+    "confidence": <float 0.0-1.0>,
     "findings": ["finding1", "finding2"],
     "recommendations": ["rec1", "rec2"]
 }}

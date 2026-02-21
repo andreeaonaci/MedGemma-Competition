@@ -101,7 +101,7 @@ def render_research_audit_page(model):
                 key="audit_doc_notes"
             )
             
-            clinical_context = st.text_input("Clinical Context (Sent to AI):", value="Patient routine checkup.", key="audit_ctx")
+            clinical_context = st.text_input("Clinical Context (Sent to AI):", value="Evaluate this fundus image for any pathological signs, anomalies, or structural damage.", key="audit_ctx")
             
             st.divider()
             run_audit = st.button("Generate & Log AI Diagnosis", use_container_width=True)
@@ -122,11 +122,23 @@ def render_research_audit_page(model):
                         
                         result = model.generate_diagnosis(image_to_analyze, final_ai_context)
                     
-                    condition = str(result.get("condition", "Unspecified")).upper().strip()
+                    # --- NOUL BLOC DE DEBUGGING ---
+                    raw_condition = str(result.get("condition", "Unspecified"))
+                    condition = raw_condition.upper().strip()
+                    
+                    # --- NOU: Smart Mapping pentru a intercepta halucinatiile comune de formatare ---
+                    # Daca modelul spune orice variatie a cuvantului "sanatos", il fortam la termenul standard
+                    healthy_synonyms = ["NO SIGNIFICANT FINDINGS.", "NO SIGNIFICANT FINDINGS", "NORMAL", "ROUTINE", "HEALTHY EYE", "NONE", "UNSPECIFIED"]
+                    
+                    if any(syn in condition for syn in healthy_synonyms):
+                        condition = "HEALTHY"
+                    # ---------------------------------------------------------------------------------
+
                     severity = str(result.get("severity", "N/A")).title()
                     confidence = str(result.get("confidence", "N/A")).upper()
                     
                     if condition not in ALLOWED_CONDITIONS:
+                        st.warning(f"**DEBUG ALERT:** Model generated the exact string `{raw_condition}`. This does not strictly match any entry in our predefined list. The system is enforcing the 'OTHER' label.")
                         condition = "OTHER"
                     
                     st.success(f"**AI Diagnosis:** {condition} | **Severity:** {severity} | **Confidence:** {confidence}")
@@ -138,10 +150,8 @@ def render_research_audit_page(model):
                     with open(log_file, mode='a', newline='', encoding='utf-8') as f:
                         writer = csv.writer(f)
                         if not file_exists:
-                            # NOU: Adaugarea coloanei Doctor_Notes in header
                             writer.writerow(["Timestamp", "Image_Name", "Doctor_Diagnosis", "Doctor_Notes", "AI_Condition", "AI_Severity", "AI_Confidence"])
                         
-                        # Curatarea textului pentru a evita probleme de formatare in CSV
                         clean_notes = doctor_notes.replace('\n', ' ').replace('\r', '')
                         
                         writer.writerow([
@@ -220,7 +230,6 @@ def render_research_audit_page(model):
                     st.markdown("### AI Deviation Analysis")
                     deviations = df[~df['Match']]
                     if not deviations.empty:
-                        # NOU: Includem Doctor_Notes in afisare daca exista in CSV
                         cols_to_display = ['Timestamp', 'Image_Name', 'Doctor_Diagnosis']
                         if 'Doctor_Notes' in deviations.columns:
                             cols_to_display.append('Doctor_Notes')

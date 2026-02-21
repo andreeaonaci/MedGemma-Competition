@@ -10,7 +10,8 @@ from transformers import (
     BitsAndBytesConfig,
 )
 
-from diagnostics.reasoning import enforce_json_schema
+# IMPORT CORECT: Aducem si logica de constructie a promptului
+from diagnostics.reasoning import enforce_json_schema, build_diagnosis_prompt
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -75,19 +76,12 @@ class MedGemmaWrapper:
         if self.model is None:
             raise RuntimeError("Model not loaded.")
 
-        system_prompt = """You are an expert ophthalmologist.
-You MUST output your response STRICTLY as a raw JSON object matching this exact format, with no additional text, markdown, or explanation:
-{
-  "findings": "...",
-  "condition": "...",
-  "severity": "...",
-  "recommendations": "...",
-  "confidence": "high/medium/low"
-}"""
+        # SOLUTIA CRITICA: Aici generam prompt-ul masiv din reasoning.py in loc sa folosim unul generic
+        full_advanced_prompt = build_diagnosis_prompt(clinical_context)
 
+        # Transmitem direct instructiunea agresiva catre model
         messages = [
-            {"role": "system", "content": [{"type": "text", "text": system_prompt}]},
-            {"role": "user", "content": [{"type": "text", "text": clinical_context},
+            {"role": "user", "content": [{"type": "text", "text": full_advanced_prompt},
                                         {"type": "image", "image": image}]}
         ]
 
@@ -109,11 +103,21 @@ You MUST output your response STRICTLY as a raw JSON object matching this exact 
             )
             generation = generation[0][input_len:]
 
+        # Extragem textul brut din tensoare
         raw_output = self.processor.decode(generation, skip_special_tokens=True)
+        
+        # --- NOU: Logging agresiv in terminal ---
+        print("\n" + "="*50)
+        print("RAW MODEL OUTPUT (FROM GPU):")
+        print(raw_output)
+        print("="*50 + "\n")
+        logger.info(f"Raw model output: {raw_output}")
+        # ----------------------------------------
 
         json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
         clean_json_string = json_match.group(0) if json_match else raw_output 
 
+        return enforce_json_schema(clean_json_string)
         return enforce_json_schema(clean_json_string)
 
     def generate_comparison(self, text_a: str, text_b: str) -> Dict[str, Any]:
