@@ -21,12 +21,10 @@ def combine_side_by_side(img1, img2):
     if i1.mode != 'RGB': i1 = i1.convert('RGB')
     if i2.mode != 'RGB': i2 = i2.convert('RGB')
     
-    # Redimensionare proportionala pentru a avea aceeasi inaltime
     new_h = max(i1.height, i2.height)
     i1 = i1.resize((int(i1.width * new_h / i1.height), new_h))
     i2 = i2.resize((int(i2.width * new_h / i2.height), new_h))
     
-    # Creare canvas nou si lipirea imaginilor
     dst = Image.new('RGB', (i1.width + i2.width, new_h))
     dst.paste(i1, (0, 0))
     dst.paste(i2, (i1.width, 0))
@@ -90,14 +88,20 @@ def render_research_audit_page(model):
         with col2:
             st.markdown("### Clinical Ground Truth")
             
-            # Utilizam variabila importata
             doctor_diagnosis = st.selectbox(
                 "Select human diagnosis (Ground Truth):",
                 ALLOWED_CONDITIONS,
                 key="audit_doc_diag"
             )
             
-            clinical_context = st.text_input("Clinical Context (Optional)", value="Patient routine checkup.", key="audit_ctx")
+            # NOU: Rubrica pentru observatiile medicului
+            doctor_notes = st.text_area(
+                "Doctor's Observations (Findings):", 
+                placeholder="Document clinical signs, anomalies, or reasoning...", 
+                key="audit_doc_notes"
+            )
+            
+            clinical_context = st.text_input("Clinical Context (Sent to AI):", value="Patient routine checkup.", key="audit_ctx")
             
             st.divider()
             run_audit = st.button("Generate & Log AI Diagnosis", use_container_width=True)
@@ -113,35 +117,38 @@ def render_research_audit_page(model):
                         
                         final_ai_context = clinical_context
                         
-                        # --- INJECTAREA CONTEXTULUI PANORAMIC PENTRU AI ---
                         if is_composite_image and processing_metadata:
                             final_ai_context = f"{clinical_context} | [CRITICAL INSTRUCTION FOR AI: The provided visual input is a single side-by-side composite image containing two views of the same eye. The LEFT half is the original unmodified image. The RIGHT half is the same image digitally processed using the following techniques: {processing_metadata}. Please analyze both sides holistically to form your diagnosis, using the right side for enhanced features but relying on the left side to confirm they are not artificial filter artifacts.]"
                         
                         result = model.generate_diagnosis(image_to_analyze, final_ai_context)
                     
-                    # Curatam output-ul modelului
                     condition = str(result.get("condition", "Unspecified")).upper().strip()
                     severity = str(result.get("severity", "N/A")).title()
                     confidence = str(result.get("confidence", "N/A")).upper()
                     
-                    # Fallback logic folosind variabila importata
                     if condition not in ALLOWED_CONDITIONS:
                         condition = "OTHER"
                     
                     st.success(f"**AI Diagnosis:** {condition} | **Severity:** {severity} | **Confidence:** {confidence}")
                     
+                    # Salvare in CSV cu noua structura
                     log_file = "clinical_audit_log.csv"
                     file_exists = os.path.isfile(log_file)
                     
                     with open(log_file, mode='a', newline='', encoding='utf-8') as f:
                         writer = csv.writer(f)
                         if not file_exists:
-                            writer.writerow(["Timestamp", "Image_Name", "Doctor_Diagnosis", "AI_Condition", "AI_Severity", "AI_Confidence"])
+                            # NOU: Adaugarea coloanei Doctor_Notes in header
+                            writer.writerow(["Timestamp", "Image_Name", "Doctor_Diagnosis", "Doctor_Notes", "AI_Condition", "AI_Severity", "AI_Confidence"])
+                        
+                        # Curatarea textului pentru a evita probleme de formatare in CSV
+                        clean_notes = doctor_notes.replace('\n', ' ').replace('\r', '')
                         
                         writer.writerow([
                             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                             img_name,
                             doctor_diagnosis,
+                            clean_notes,
                             condition,
                             severity,
                             confidence
@@ -213,7 +220,13 @@ def render_research_audit_page(model):
                     st.markdown("### AI Deviation Analysis")
                     deviations = df[~df['Match']]
                     if not deviations.empty:
-                        st.dataframe(deviations[['Timestamp', 'Image_Name', 'Doctor_Diagnosis', 'AI_Condition', 'AI_Confidence']], use_container_width=True)
+                        # NOU: Includem Doctor_Notes in afisare daca exista in CSV
+                        cols_to_display = ['Timestamp', 'Image_Name', 'Doctor_Diagnosis']
+                        if 'Doctor_Notes' in deviations.columns:
+                            cols_to_display.append('Doctor_Notes')
+                        cols_to_display.extend(['AI_Condition', 'AI_Confidence'])
+                        
+                        st.dataframe(deviations[cols_to_display], use_container_width=True)
                     else:
                         st.success("No deviations found. AI and Clinical Truth are in 100% agreement.")
             except Exception as e:
