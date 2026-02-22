@@ -19,6 +19,11 @@ medgemma_model = None
 
 # --- SCHEME DE DATE ---
 
+class VisualComparisonRequest(BaseModel):
+    image1_base64: str
+    image2_base64: str
+    question: str
+
 class ChatMessage(BaseModel):
     role: str 
     content: str
@@ -32,6 +37,11 @@ class DiagnosisChatRequest(BaseModel):
 class DiagnosisChatResponse(BaseModel):
     reply: str
     
+
+class AuditDiagnosisRequest(BaseModel):
+    image_base64: str
+    clinical_context: str
+
 # --- UTILITARE ---
 
 def decode_base64_to_image(base64_str: str) -> Image.Image:
@@ -72,7 +82,7 @@ AI Ophthalmic Assistant:"""
         current_message=request.message
     )
 
-# --- CICLU DE VIATA API ---
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -95,7 +105,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="MedGemma Diagnostic API", version="1.0", lifespan=lifespan)
 
-# --- ENDPOINT-URI ---
+###Endpointuri
 
 @app.get("/health")
 async def health_check():
@@ -108,19 +118,50 @@ async def chat_diagnosis(request: DiagnosisChatRequest):
         raise HTTPException(status_code=503, detail="Model is not loaded.")
     
     try:
-        # 1. Decodificam imaginea
         pil_image = decode_base64_to_image(request.image_base64)
         
-        # 2. Construim prompt-ul arhitectural cu Langchain
         final_prompt = build_langchain_prompt(request)
         
-        # 3. Rulam inferenta prin noua metoda de chat
         ai_response = medgemma_model.generate_chat_response(pil_image, final_prompt)
         
         return DiagnosisChatResponse(reply=ai_response)
         
     except Exception as e:
         logger.error(f"Error during API inference: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/audit_diagnosis")
+async def audit_diagnosis(request: AuditDiagnosisRequest):
+    if medgemma_model is None:
+        raise HTTPException(status_code=503, detail="Model is not loaded.")
+    
+    try:
+        pil_image = decode_base64_to_image(request.image_base64)
+        
+        result_dict = medgemma_model.generate_diagnosis(pil_image, request.clinical_context)
+        
+        return result_dict
+        
+    except Exception as e:
+        logger.error(f"Error during API audit diagnosis: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/visual_comparison")
+async def visual_comparison(request: VisualComparisonRequest):
+    if medgemma_model is None:
+        raise HTTPException(status_code=503, detail="Model is not loaded.")
+    
+    try:
+        
+        img1 = decode_base64_to_image(request.image1_base64)
+        img2 = decode_base64_to_image(request.image2_base64)
+        
+        result_text = medgemma_model.generate_visual_comparison(img1, img2, request.question)
+        
+        return {"result": result_text}
+        
+    except Exception as e:
+        logger.error(f"Error during API visual comparison: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":

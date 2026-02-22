@@ -5,32 +5,26 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import string
+import requests
+import base64
+from io import BytesIO
 from datetime import datetime
 from PIL import Image
 import numpy as np
 from utils import helpers
 
-# IMPORTUL UNIC PENTRU VOCABULAR
 from diagnostics.reasoning import ALLOWED_CONDITIONS
 
-# Functie utilitara pentru a lipi doua imagini stanga-dreapta
-def combine_side_by_side(img1, img2):
-    i1 = Image.fromarray(img1) if isinstance(img1, np.ndarray) else img1
-    i2 = Image.fromarray(img2) if isinstance(img2, np.ndarray) else img2
-    
-    if i1.mode != 'RGB': i1 = i1.convert('RGB')
-    if i2.mode != 'RGB': i2 = i2.convert('RGB')
-    
-    new_h = max(i1.height, i2.height)
-    i1 = i1.resize((int(i1.width * new_h / i1.height), new_h))
-    i2 = i2.resize((int(i2.width * new_h / i2.height), new_h))
-    
-    dst = Image.new('RGB', (i1.width + i2.width, new_h))
-    dst.paste(i1, (0, 0))
-    dst.paste(i2, (i1.width, 0))
-    return dst
+API_AUDIT_URL = "http://localhost:8000/api/audit_diagnosis"
 
-def render_research_audit_page(model):
+def image_to_base64(image: Image.Image) -> str:
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+    buffered = BytesIO()
+    image.save(buffered, format="JPEG")
+    return base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+def render_research_audit_page(model=None): # Pastram argumentul pentru a nu sparge app.py, dar il ignoram
     st.header("Clinical Research & Audit")
     
     if 'audit_limit' not in st.session_state:
@@ -38,7 +32,6 @@ def render_research_audit_page(model):
     
     sub_tabs = st.tabs(["Data Collection", "Performance Dashboard"])
     
-    # --- SUB-TAB 1: Data Collection ---
     with sub_tabs[0]:
         st.info("Log human diagnosis and compare it with AI inference for statistical benchmarking.")
 
@@ -47,7 +40,6 @@ def render_research_audit_page(model):
         image_to_analyze = None
         img_name = "unknown_image.png"
         processing_metadata = "" 
-        is_composite_image = False 
 
         with col1:
             st.markdown("### Diagnostic Imagery")
@@ -68,9 +60,8 @@ def render_research_audit_page(model):
                 with prev_col2:
                     st.image(transferred_img, caption="Processed", use_container_width=True)
                 
-                image_to_analyze = combine_side_by_side(transferred_orig, transferred_img)
-                img_name = "composite_transfer.png"
-                is_composite_image = True
+                image_to_analyze = transferred_img
+                img_name = "processed_transfer.png"
                 
                 if st.button("Discard images & upload new"):
                     st.session_state['transferred_image'] = None
@@ -94,7 +85,6 @@ def render_research_audit_page(model):
                 key="audit_doc_diag"
             )
             
-            # NOU: Rubrica pentru observatiile medicului
             doctor_notes = st.text_area(
                 "Doctor's Observations (Findings):", 
                 placeholder="Document clinical signs, anomalies, or reasoning...", 
@@ -109,30 +99,30 @@ def render_research_audit_page(model):
         if run_audit:
             if image_to_analyze is None:
                 st.warning("Please provide an image first (upload or transfer from Processing).")
-            elif model is None:
-                st.error("Model not loaded.")
             else:
                 try:
-                    with st.spinner("MedGemma is analyzing the data..."):
+                    with st.spinner("MedGemma is analyzing the data via API..."):
                         
                         final_ai_context = clinical_context
+                        if processing_metadata:
+                            final_ai_context = f"{clinical_context} | [NOTE: This single fundus image has been digitally enhanced using {processing_metadata} to increase contrast and reveal subtle pathologies. Base your diagnosis strictly on these enhanced features.]"
                         
-                        if is_composite_image and processing_metadata:
-                            final_ai_context = f"{clinical_context} | [CRITICAL INSTRUCTION FOR AI: The provided visual input is a single side-by-side composite image containing two views of the same eye. The LEFT half is the original unmodified image. The RIGHT half is the same image digitally processed using the following techniques: {processing_metadata}. Please analyze both sides holistically to form your diagnosis, using the right side for enhanced features but relying on the left side to confirm they are not artificial filter artifacts.]"
+                        # Comunicarea cu backend-ul FastAPI
+                        payload = {
+                            "image_base64": image_to_base64(image_to_analyze),
+                            "clinical_context": final_ai_context
+                        }
                         
-                        result = model.generate_diagnosis(image_to_analyze, final_ai_context)
+                        response = requests.post(API_AUDIT_URL, json=payload)
+                        response.raise_for_status()
+                        result = response.json()
                     
-                    # --- NOUL BLOC DE DEBUGGING ---
                     raw_condition = str(result.get("condition", "Unspecified"))
                     condition = raw_condition.upper().strip()
                     
-                    # --- NOU: Smart Mapping pentru a intercepta halucinatiile comune de formatare ---
-                    # Daca modelul spune orice variatie a cuvantului "sanatos", il fortam la termenul standard
                     healthy_synonyms = ["NO SIGNIFICANT FINDINGS.", "NO SIGNIFICANT FINDINGS", "NORMAL", "ROUTINE", "HEALTHY EYE", "NONE", "UNSPECIFIED"]
-                    
                     if any(syn in condition for syn in healthy_synonyms):
                         condition = "HEALTHY"
-                    # ---------------------------------------------------------------------------------
 
                     severity = str(result.get("severity", "N/A")).title()
                     confidence = str(result.get("confidence", "N/A")).upper()
@@ -143,7 +133,6 @@ def render_research_audit_page(model):
                     
                     st.success(f"**AI Diagnosis:** {condition} | **Severity:** {severity} | **Confidence:** {confidence}")
                     
-                    # Salvare in CSV cu noua structura
                     log_file = "clinical_audit_log.csv"
                     file_exists = os.path.isfile(log_file)
                     
@@ -165,10 +154,11 @@ def render_research_audit_page(model):
                         ])
                     st.info(f"Entry successfully added to `{log_file}`")
                     
+                except requests.exceptions.ConnectionError:
+                    st.error("Cannot connect to backend. Please ensure `python api.py` is running.")
                 except Exception as e:
                     st.error(f"Error during audit generation: {e}")
 
-    # --- SUB-TAB 2: Performance Dashboard ---
     with sub_tabs[1]:
         st.subheader("Statistical Benchmarking")
         log_file = "clinical_audit_log.csv"

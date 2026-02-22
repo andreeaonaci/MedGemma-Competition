@@ -1,38 +1,73 @@
 import streamlit as st
+import requests
+import base64
+from io import BytesIO
+from PIL import Image
 from utils import helpers
 
-def render_comparison_page(model):
-    st.header("AI Visual Comparison")
-    st.info("Upload two retinal images to identify pathological differences.")
+API_COMPARE_URL = "http://localhost:8000/api/visual_comparison"
+
+def image_to_base64(image: Image.Image) -> str:
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+    buffered = BytesIO()
+    image.save(buffered, format="JPEG")
+    return base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+def render_comparison_page(model=None): # Pastram argumentul pentru compatibilitate cu app.py
+    st.header("AI Visual Comparison (Side-by-Side)")
+    st.info("Upload two retinal images to ask MedGemma to compare them for pathological differences.")
 
     col1, col2 = st.columns(2)
-    with col1:
-        image_a_file = st.file_uploader("Upload Image A", type=["png", "jpg", "jpeg"], key="ai_comp_a_unique")
-    with col2:
-        image_b_file = st.file_uploader("Upload Image B", type=["png", "jpg", "jpeg"], key="ai_comp_b_unique")
     
-    comparison_question = st.text_area(
-        "Clinical Query", 
-        value="Compare these two retinal images. What pathological features are visible in Image A but missing in Image B?"
+    with col1:
+        st.markdown("### Image A")
+        img1_file = st.file_uploader("Upload First Image", type=["png", "jpg", "jpeg"], key="ai_comp_1")
+        img1 = None
+        if img1_file is not None:
+            img1 = helpers.load_image(img1_file)
+            st.image(img1, caption="Image A", use_container_width=True)
+
+    with col2:
+        st.markdown("### Image B")
+        img2_file = st.file_uploader("Upload Second Image", type=["png", "jpg", "jpeg"], key="ai_comp_2")
+        img2 = None
+        if img2_file is not None:
+            img2 = helpers.load_image(img2_file)
+            st.image(img2, caption="Image B", use_container_width=True)
+
+    st.divider()
+    
+    question = st.text_input(
+        "Ask a clinical question about these two images:", 
+        value="Compare these two retinal images carefully. What are the key pathological differences between them?"
     )
     
-    run_ai_comparison = st.button("Generate AI Comparison")
-
-    if run_ai_comparison:
-        if image_a_file is None or image_b_file is None:
-            st.warning("Please upload both images.")
-        elif model is None:
-            st.error("Model not loaded.")
+    if st.button("Generate Comparison Report", type="primary", use_container_width=True):
+        if img1 is None or img2 is None:
+            st.warning("Please upload both Image A and Image B before generating the comparison.")
         else:
-            try:
-                img_a = helpers.load_image(image_a_file)
-                img_b = helpers.load_image(image_b_file)
-                
-                with st.spinner("Concatenating spatial data and running inference..."):
-                    comparison_result = model.generate_visual_comparison(img_a, img_b, comparison_question)
-                
-                st.subheader("Comparative Analysis Report")
-                st.write(comparison_result)
-                
-            except Exception as e:
-                st.error(f"Error during visual comparison: {e}")
+            with st.spinner("MedGemma is analyzing and comparing the images via API..."):
+                try:
+                    payload = {
+                        "image1_base64": image_to_base64(img1),
+                        "image2_base64": image_to_base64(img2),
+                        "question": question
+                    }
+                    
+                    response = requests.post(API_COMPARE_URL, json=payload)
+                    response.raise_for_status()
+                    
+                    result_text = response.json().get("result", "No result returned.")
+                    
+                    st.success("Comparison Analysis Complete")
+                    
+                    # Afisam rezultatul intr-un container stilizat
+                    with st.container(border=True):
+                        st.markdown("###AI Clinical Report")
+                        st.write(result_text)
+                    
+                except requests.exceptions.ConnectionError:
+                    st.error("Cannot connect to backend. Please ensure `python api.py` is running.")
+                except Exception as e:
+                    st.error(f"Error during comparison: {e}")
