@@ -3,14 +3,23 @@ import base64
 from io import BytesIO
 from PIL import Image
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, HTTPException
+import cv2
+from fastapi import FastAPI, File, Form, HTTPException, Response, UploadFile
 from pydantic import BaseModel
 from typing import List, Optional
+import torch
 
 from langchain_core.prompts import PromptTemplate
 
-# Importam wrapper-ul nostru existent
+from diagnostics.reasoning import build_diagnosis_prompt
+from diagnostics.reasoning import build_diagnosis_prompt
 from models.medgemma_wrapper import load_model
+from utils.attention_rollout import AttentionRollout as VisionAttentionRollout
+import os
+
+os.environ["PYTORCH_SDP_ATTENTION"] = "eager"
+
+
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -162,6 +171,60 @@ async def visual_comparison(request: VisualComparisonRequest):
         
     except Exception as e:
         logger.error(f"Error during API visual comparison: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.post("/attention-heatmap")
+async def attention_heatmap_endpoint(
+    file: UploadFile = UploadFile(...), 
+    context: str = Form(...)
+):
+    if medgemma_model is None:
+        raise HTTPException(status_code=503, detail="Model is not loaded.")
+
+    try:
+        # Load image
+        pil_image = Image.open(BytesIO(await file.read())).convert("RGB")
+
+        # Build the prompt like in reasoning.py
+        full_prompt = build_diagnosis_prompt(context)
+
+        # Construct messages exactly as generate_diagnosis does
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": full_prompt},
+                    {"type": "image", "image": pil_image}
+                ]
+            }
+        ]
+
+        # Tokenize for the model
+        inputs = medgemma_model.processor.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            tokenize=True,
+            return_dict=True,
+            return_tensors="pt"
+        ).to(medgemma_model.device, dtype=torch.float16)
+
+        # Generate attention rollout
+        rollout = VisionAttentionRollout(medgemma_model.model)  # SigLIP-based
+        cam_tensor = rollout.generate(inputs)  # torch tensor [H, W] normalized 0-1
+
+        # Convert torch tensor -> PIL image
+        cam_tensor = (cam_tensor.clamp(0, 1) * 255).to(torch.uint8)
+        cam_pil = Image.fromarray(cam_tensor.cpu().numpy()).convert("RGB")
+
+        # Return as PNG
+        buffer = BytesIO()
+        cam_pil.save(buffer, format="PNG")
+        buffer.seek(0)
+
+        return Response(content=buffer.getvalue(), media_type="image/png")
+
+    except Exception as e:
+        logger.error(f"Error generating attention heatmap: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":

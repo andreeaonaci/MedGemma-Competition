@@ -12,6 +12,8 @@ from transformers import (
 
 # IMPORT CORECT: Aducem si logica de constructie a promptului
 from diagnostics.reasoning import enforce_json_schema, build_diagnosis_prompt
+from utils.attention_rollout import AttentionRollout, overlay_heatmap
+import numpy as np
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -39,6 +41,32 @@ class MedGemmaWrapper:
         self.model = None
         self.processor = None
 
+    def load_full_model(self):
+        logger.info(f"Loading model: {MODEL_ID}")
+
+        self.processor = AutoProcessor.from_pretrained(
+            MODEL_ID,
+            trust_remote_code=True
+        )
+
+        if self.device == "cuda":
+            self.model = AutoModelForImageTextToText.from_pretrained(
+                MODEL_ID,
+                dtype=torch.float16,
+                trust_remote_code=True,
+                attn_implementation="eager"
+            ).to("cuda")
+        else:
+            self.model = AutoModelForImageTextToText.from_pretrained(
+                MODEL_ID,
+                dtype=torch.float32,
+                trust_remote_code=True,
+                attn_implementation="eager"
+            ).to("cpu")
+
+        self.model.eval()
+        logger.info("Model loaded successfully.")
+
     def load(self):
         logger.info(f"Loading model: {MODEL_ID}")
 
@@ -58,14 +86,16 @@ class MedGemmaWrapper:
                 MODEL_ID,
                 quantization_config=bnb_config,
                 device_map="auto",
-                trust_remote_code=True
+                trust_remote_code=True,
+                attn_implementation="eager"
             )
         else:
             self.model = AutoModelForImageTextToText.from_pretrained(
                 MODEL_ID,
                 torch_dtype=torch.float32,
                 device_map=None,
-                trust_remote_code=True
+                trust_remote_code=True,
+                attn_implementation="eager"
             )
             self.model.to("cpu")
 
@@ -117,7 +147,6 @@ class MedGemmaWrapper:
         json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
         clean_json_string = json_match.group(0) if json_match else raw_output 
 
-        return enforce_json_schema(clean_json_string)
         return enforce_json_schema(clean_json_string)
 
     def generate_comparison(self, text_a: str, text_b: str) -> Dict[str, Any]:
@@ -216,7 +245,6 @@ Write a clear, professional clinical report in plain text. Do NOT use JSON."""
 
         return self.processor.decode(generation, skip_special_tokens=True).strip()
 
-
     def generate_chat_response(self, image: Image.Image, chat_prompt: str) -> str:
             """
             Metoda dedicata pentru interactiunea de tip chat (text liber).
@@ -250,6 +278,33 @@ Write a clear, professional clinical report in plain text. Do NOT use JSON."""
                 generation = generation[0][input_len:]
 
             return self.processor.decode(generation, skip_special_tokens=True).strip()
+
+    def generate_attention_heatmap(self, image, clinical_context: str):
+        if self.model is None:
+            self.load()  # Incarcam modelul daca nu e deja incarcat
+        # print("="*50)
+        # print(self.model)
+        # print("="*50)
+        prompt = build_diagnosis_prompt(clinical_context)
+
+        inputs = self.processor(
+            images=image,
+            text=prompt,
+            return_tensors="pt"
+        )
+
+        if self.device == "cuda":
+            inputs = {k: v.to("cuda") for k, v in inputs.items()}
+
+        rollout = AttentionRollout(self.model, device=self.device)
+
+        heatmap_tensor = rollout.generate(inputs)
+
+        original_np = np.array(image)
+
+        overlay = overlay_heatmap(original_np, heatmap_tensor)
+
+        return overlay
 
 def load_model(device: str = "cuda"):
     wrapper = MedGemmaWrapper(device=device)

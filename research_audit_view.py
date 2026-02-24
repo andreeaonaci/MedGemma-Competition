@@ -56,9 +56,9 @@ def render_research_audit_page(model=None): # Pastram argumentul pentru a nu spa
                 
                 prev_col1, prev_col2 = st.columns(2)
                 with prev_col1:
-                    st.image(transferred_orig, caption="Original", use_container_width=True)
+                    st.image(transferred_orig, caption="Original", width='stretch')
                 with prev_col2:
-                    st.image(transferred_img, caption="Processed", use_container_width=True)
+                    st.image(transferred_img, caption="Processed", width='stretch')
                 
                 image_to_analyze = transferred_img
                 img_name = "processed_transfer.png"
@@ -74,7 +74,7 @@ def render_research_audit_page(model=None): # Pastram argumentul pentru a nu spa
                 if uploaded_file is not None:
                     image_to_analyze = helpers.load_image(uploaded_file)
                     img_name = uploaded_file.name
-                    st.image(image_to_analyze, caption="Manual Upload Preview", use_container_width=True)
+                    st.image(image_to_analyze, caption="Manual Upload Preview", width='stretch')
         
         with col2:
             st.markdown("### Clinical Ground Truth")
@@ -94,7 +94,7 @@ def render_research_audit_page(model=None): # Pastram argumentul pentru a nu spa
             clinical_context = st.text_input("Clinical Context (Sent to AI):", value="Evaluate this fundus image for any pathological signs, anomalies, or structural damage.", key="audit_ctx")
             
             st.divider()
-            run_audit = st.button("Generate & Log AI Diagnosis", use_container_width=True)
+            run_audit = st.button("Generate & Log AI Diagnosis", width='stretch')
 
         if run_audit:
             if image_to_analyze is None:
@@ -207,7 +207,7 @@ def render_research_audit_page(model=None): # Pastram argumentul pentru a nu spa
                         max_x = max(max(doc_dist.values, default=0), max(ai_dist.values, default=0)) + 5
                         
                         fig1.update_layout(xaxis_title="Percentage of Total Cases (%)", yaxis=dict(showticklabels=False, autorange="reversed"), xaxis=dict(range=[-2, max_x], zeroline=False, showgrid=True), annotations=annotations, legend=dict(orientation="h", yanchor="bottom", y=1.05, xanchor="left", x=0), barmode='overlay', margin=dict(l=0, r=0, t=70, b=10), height=100 + (len(displayed) * 60), transition=dict(duration=400, easing="cubic-in-out"))
-                        st.plotly_chart(fig1, use_container_width=True)
+                        st.plotly_chart(fig1, width='stretch')
                         
                         if len(filtered_conditions) > 10:
                             c1, c2, _ = st.columns([1, 1, 4])
@@ -225,7 +225,7 @@ def render_research_audit_page(model=None): # Pastram argumentul pentru a nu spa
                             cols_to_display.append('Doctor_Notes')
                         cols_to_display.extend(['AI_Condition', 'AI_Confidence'])
                         
-                        st.dataframe(deviations[cols_to_display], use_container_width=True)
+                        st.dataframe(deviations[cols_to_display], width='stretch')
                     else:
                         st.success("No deviations found. AI and Clinical Truth are in 100% agreement.")
             except Exception as e:

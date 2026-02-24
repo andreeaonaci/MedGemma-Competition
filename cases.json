@@ -1,0 +1,3596 @@
+[
+    {
+        "raw_image": "image_55_0.png",
+        "annotated_image": "image_56_1.png",
+        "fundus_image": "image_55_1.png",
+        "Interpretation": "This patient has multiple drusen of varying sizes, consistent with early AMD. Although irregular, the EZ is not clearly interrupted, and there is an HFL-RA above the druse. ",
+        "Age": "74",
+        "Location": "Fovea ",
+        "Case": "1",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The fovea presents a slightly irregular reflectivity inferiorly. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple, intermediate and small"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_57_0.png",
+        "annotated_image": "image_58_1.png",
+        "fundus_image": "image_57_1.png",
+        "Interpretation": "This patient has a single small druse right at the fovea. The vitreous is adherent to the fovea, but it does not cause any  traction or deformation of the fovea. So, we are looking at a patient with early signs of AMD and a VMA. ",
+        "Age": "79",
+        "Location": "Fovea ",
+        "Case": "2",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The right half of the image has a somewhat irregular appearance which is most likely caused by an irregular distribution of pigment (norm-variant). ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Druse",
+                        "description": "Single, small druse"
+                    },
+                    {
+                        "alteration": "Preretinal",
+                        "description": "VMA"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_59_0.png",
+        "annotated_image": "image_60_1.png",
+        "fundus_image": "image_59_1.png",
+        "Interpretation": "There are multiple drusen of varying sizes spread across the scan – a hallmark of AMD. The HRS are associated with the RPE alterations and most likely represent pigment migration, which is a sign of AMD progression. ",
+        "Age": "70",
+        "Location": "Fovea ",
+        "Case": "3",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Very dark IR image, insufficient for assessment. However, there is a light-reflex artifact, and if one looks closely, there is a drusen-suspect irregular appearance of the macular region. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_61_0.png",
+        "annotated_image": "image_62_1.png",
+        "fundus_image": "image_61_1.png",
+        "Interpretation": "In this scan, we can appreciate well-delineated subretinal drusenoid deposits, of which one has caused an interruption of  the EZ. We are looking at a patient with AMD who is at a higher risk for MNV development. ",
+        "Age": "76",
+        "Location": "Peripheral macula ",
+        "Case": "4",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are disseminated reticular pseudodrusen and the central HRS, in conjunction with the drusen probably represent clumped or migrated pigment. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "SDD",
+                        "description": "Reticular pseudodrusen"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_63_0.png",
+        "annotated_image": "image_64_1.png",
+        "fundus_image": "image_63_1.png",
+        "Interpretation": "The most striking feature of this eye is heterogenous PED, which is consistent with a fibrovascular PED and is associated with SRF – findings very consistent with an active type 1 MNV. There are no clear indications for the underlying condition of the MNV in this scan. ",
+        "Age": "73",
+        "Location": "Fovea ",
+        "Case": "5",
+        "Scan Quality": "Good without artifacts ",
+        "IR Image": "Hyporeflective appearance of the macular region with a central medium reflective circle and multiple bright spots; shadowing artifact in the inferior portion of the image, due to false centration. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated to F-PED"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_65_0.png",
+        "annotated_image": "image_66_1.png",
+        "fundus_image": "image_65_1.png",
+        "Interpretation": "Epiretinal ERM Disorganization of retinal layers ",
+        "Age": "61",
+        "Location": "Fovea ",
+        "Case": "6",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Wrinkling of the retinal surface; otherwise, regular appearance. ",
+        "findings": [
+            {}
+        ]
+    },
+    {
+        "raw_image": "image_67_0.png",
+        "annotated_image": "image_68_1.png",
+        "fundus_image": "image_67_1.png",
+        "Interpretation": "There is a larger druse right at the fovea and on the left side of the scan – we are looking at a patient with AMD. The subretinal area on the left side is suspect of SDD or small drusen. The hyperreflective area above the central druse most likely represents an HFL-RA. ",
+        "Age": "87",
+        "Location": "Fovea ",
+        "Case": "7",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "A dark spot with a bright halo right at the fovea consistent with a druse. There are multiple hyperreflective spots and bright areas, predominantly in the extramacular region. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple of varying sizes"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_69_0.png",
+        "annotated_image": "image_70_1.png",
+        "fundus_image": "image_69_1.png",
+        "Interpretation": "We are looking at a scan with three confluent drusen with associated pigment migration (a sign of AMD progression) and  an irregular EZ. The ERM is causing a deformation of the retina with a loss of the foveal contour.  ",
+        "Age": "76",
+        "Location": "Fovea ",
+        "Case": "8",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Wrinkling of the retinal surface and irregular appearance of the whole macula. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple, confluent"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration"
+                    },
+                    {
+                        "alteration": "EZ",
+                        "description": "Irregular"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Loss of foveal contour"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_71_0.png",
+        "annotated_image": "image_72_1.png",
+        "fundus_image": "image_71_1.png",
+        "Interpretation": "This scan is of inferior quality with ill-defined retinal layers and a large vitreous opacity causing a posterior signal blockage  (Signal-b). In addition, the retina is relatively thinned, which could indicate a past ischemic event. ",
+        "Age": "57",
+        "Location": "Parafovea ",
+        "Case": "9",
+        "Scan Quality": "Noisy without artifects ",
+        "IR Image": "Some wrinkling of the retinal tissue following the superior vascular arcade is visible; there is a dark veil originating from the optic disc. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRL",
+                        "description": "Thinned"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "VO",
+                        "description": "VO with posterior signal blockage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_73_0.png",
+        "annotated_image": "image_74_1.png",
+        "fundus_image": "image_73_1.png",
+        "Interpretation": "Intraretinal HRS Associated to alterations of the RPE ",
+        "Age": "75",
+        "Location": "Fovea ",
+        "Case": "10",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple hyperreflective spots and areas and disseminated drusen-suspect alterations spread across the macula. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusenoid PED, drusen"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS, no exudation"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ and ELM interrupted"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_75_0.png",
+        "annotated_image": "image_76_1.png",
+        "fundus_image": "image_75_1.png",
+        "Interpretation": "PR PR atrophy, ORT ",
+        "Age": "90",
+        "Location": "Fovea ",
+        "Case": "11",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large bright area with visualized choroidal vessels – consistent with geographic atrophy. Reticular pseudodrusen are spread across the whole fundus. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Interrupted, elevated"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS, no exudation"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "GA (cRORA)"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SDD",
+                        "description": "Reticular pseudodrusen"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_77_0.png",
+        "annotated_image": "image_78_1.png",
+        "fundus_image": "image_77_1.png",
+        "Interpretation": "The most striking feature of this scan is the accumulation of SRF. In conjunction with the suspiciously thickened choroid,  this patient is probably suffering from a central serous chorioretinopathy. The PRs have a granulated, irregular appearance  which could represent elongated or shed PR outer segments or fibrin material. The HRS around the ELM could be signs of  retinal degeneration. ",
+        "Age": "50",
+        "Location": "Parafovea ",
+        "Case": "12",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large hyporeflective area that extends into the lower part of the fundus. In addition, right above the fovea is an accumulation of irregular hyperreflective spots. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "PC",
+                        "description": "Suspicious of Pachychoroid (PC)"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "Irregularity/Granulated appearance"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Around the ELM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_79_0.png",
+        "annotated_image": "image_80_1.png",
+        "fundus_image": "image_79_1.png",
+        "Interpretation": "This is an ambiguous case that leaves room for multiple interpretations. The large hyporeflective PED neither has the classic heterogeneous appearance of a F-PED nor the black appearance of a S-PED; however, it is associated with SHRM and an SRF-suspect area pointing towards an MNV. The SRF accumulation could result from a neurosensory detachment caused by the huge PED and only represent pseudo-SRF. As drusen are the hallmark of AMD we can confidently diagnose it. However, in this case, OCT-A or FA would be advisable to rule out an MNV. The HRS in this constellation most likely represents pigment migration – a sign of AMD progression. ",
+        "Age": "73",
+        "Location": "Fovea ",
+        "Case": "13",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of the macular region consistent with drusen; there is a darker area in the inferior part of the parafoveal macula and a light-reflex artifact right in the center. Widespread areas of reticular pseudodrusen. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusen;  hyporeflective PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Suspicious"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Suspicious"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_81_0.png",
+        "annotated_image": "image_82_1.png",
+        "fundus_image": "image_81_1.png",
+        "Interpretation": "This eye's most striking feature is the pronounced accumulation of SHRM with associated SRF which is very consistent with a type 2 MNV. There is also a SIRE probably due to a type 1 MNV. Together these findings are very consistent with an active mixed-type MNV. There are multiple tiny druplets. ",
+        "Age": "84",
+        "Location": "Fovea ",
+        "Case": "14",
+        "Scan Quality": "Good without artifacts ",
+        "IR Image": "A hyporeflective area in the temporal macula. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, Irregular"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Druplets"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS and SRF"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Medium reflective (fuzzy) with associated SRF"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation from MNV"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_83_0.png",
+        "annotated_image": "image_84_1.png",
+        "fundus_image": "image_83_1.png",
+        "Interpretation": "Preretinal PH Posterior hyaloid ",
+        "Age": "88",
+        "Location": "Parafovea ",
+        "Case": "15",
+        "Scan Quality": "Good with without artifacts ",
+        "IR Image": "Dark image. An irregular hyperreflective area between the optic disc and the macula. Peripapillary chorioretinal atrophy. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Atrophic"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "RPE- atrophy with signal hypertransmission"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Hyperreflective (solid)"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "PR atrophy"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_85_0.png",
+        "annotated_image": "image_86_1.png",
+        "fundus_image": "image_85_1.png",
+        "Interpretation": "This eye's most striking feature is the large microaneurysm (MA), a hallmark of diabetic retinopathy, with associated IRF  probably due to a leakage from the MA . This patient very likely has a diabetic macular edema. In addition, the ERM is  causing a wrinkling of the RNFL. ",
+        "Age": "60",
+        "Location": "Parafovea ",
+        "Case": "16",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple black spots in the parafoveal region and a hyporeflective appearance of that area. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Oval microaneurysm"
+                    },
+                    {
+                        "alteration": "Epiretinal",
+                        "description": "ERM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_87_0.png",
+        "annotated_image": "image_88_1.png",
+        "fundus_image": "image_87_1.png",
+        "Interpretation": "Preretinal VMA Vitreomacular adhesion ",
+        "Age": "57",
+        "Location": "Fovea ",
+        "Case": null,
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The superior temporal veins appear tortuous. Additionally, blot and flame-shaped retinal hemorrhages are visible in the superior macular pole. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IHRM",
+                        "description": "intraretinal haemorrhage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_89_0.png",
+        "annotated_image": "image_90_1.png",
+        "fundus_image": "image_89_1.png",
+        "Interpretation": "In this scan, we can appreciate well-delineated reticular pseudodrusen that caused EZ fragmentation. We are looking at a  patient with AMD. ",
+        "Age": "82",
+        "Location": "Peripheral macula ",
+        "Case": "18",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple hyperreflective spots as well as disseminated reticular pseudodrusen. However, the fovea seems to be spared. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SDD",
+                        "description": "Reticular pseudodrusen"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ fragmented"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_91_0.png",
+        "annotated_image": "image_92_1.png",
+        "fundus_image": "image_91_1.png",
+        "Interpretation": "This eye’s most striking feature is the large, oval microaneurysm, a hallmark of diabetic retinopathy. In addition, three fluid- filled spaces formed around the OPL, probably due to increased vascular permeability. They are causing a minimal  thickening of the retina and, thus, early-stage diabetic macular edema. ",
+        "Age": "57",
+        "Location": "Parafovea ",
+        "Case": "19",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are disseminated hyporeflective spots that could represent retinal hemorrhages and microaneurysms. The inferior half of the fundus also has a hyporeflective appearance. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Minimal thickening"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Oval microaneurysm"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Outer retina"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_93_0.png",
+        "annotated_image": "image_94_1.png",
+        "fundus_image": "image_93_1.png",
+        "Interpretation": "The most striking feature of this eye is a vitreomacular traction that is causing a detachment of the retina from the RPE leading to an accumulation of SRF. Additionally, the EZ appears irregular at the foveola, and it is also interrupted. ",
+        "Age": "53",
+        "Location": "Fovea ",
+        "Case": null,
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Central light reflex artifact and a few disseminated drusen around the macula. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Tractional"
+                    },
+                    {
+                        "alteration": "EZ",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "VMT",
+                        "description": "Causing neurosensory detachment"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_95_0.png",
+        "annotated_image": "image_96_1.png",
+        "fundus_image": "image_95_1.png",
+        "Interpretation": "There are multiple microaneurysms and hard exudates – both are hallmarks of DR. The accumulation of IRF causes retinal  thickening and leads to the suspected diagnosis of a diabetic macular edema.  Additionally, there is a distinct ERM.  ",
+        "Age": "52",
+        "Location": "Fovea ",
+        "Case": "21",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Multiple dark spots around the macula, fovea looks slightly darker. Light reflex artifact in the center. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudate"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Microaneurysm"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_97_0.png",
+        "annotated_image": "image_98_1.png",
+        "fundus_image": "image_97_1.png",
+        "Interpretation": "Subretinal SRF Associated to RPE alteration ",
+        "Age": "60",
+        "Location": "Fovea ",
+        "Case": "22",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The fovea appears hyporeflective, and there are multiple hyperreflective spots. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS and SRF"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_99_0.png",
+        "annotated_image": "image_100_1.png",
+        "fundus_image": "image_99_1.png",
+        "Interpretation": "This patient is suffering from a CME with minimal SRF accumulation. The hyperreflective appearance of the inner retinal layers with a p-MLM indicate retinal ischemia, secondary to artery flow impairment. The IR image in conjunction with the OCT scan, present a picture consistent with active CME secondary to a BRVO with artery flow impairment. ",
+        "Age": "66",
+        "Location": "Fovea ",
+        "Case": "23",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The left inferior quadrant of the macula appears hyporeflective with dilated veins. An even darker area surrounds the central fovea. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated with CME"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "IRL",
+                        "description": "Hyperreflective, p-MLM"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_101_0.png",
+        "annotated_image": "image_102_1.png",
+        "fundus_image": "image_101_1.png",
+        "Interpretation": "The most striking feature of this scan is the large area of SHRM, which could represent a mature MNV (fibrotic/fibrovascular material). There is PR atrophy above the SHRM and on the left side is an SRF-suspect region which should be further investigated. We are looking at a patient with suspected MNV, secondary to AMD (drusen suspect areas in the IR image). In this scan, the HRS could represent degenerated retinal tissue or lipid exudates. There is also a prechoroidal cleft temporally, which is more common in anti-VEGF treated eyes. ",
+        "Age": "89",
+        "Location": "Parafoveal macula ",
+        "Case": "24",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple hyperreflective areas in the superior half of the image – consistent with drusen or areas of atrophy; the inferior portion of the image presents a large hyporeflective area, consistent with fluid accumulation. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "Choroid",
+                        "description": "Prechoroidal cleft"
+                    },
+                    {
+                        "alteration": "RPE",
+                        "description": "Interrupted, elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Heterogenous RPE elevation"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Moderately hyperreflective"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "PR atrophy"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Minimal (suspect)"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Inner and outer retina"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_103_0.png",
+        "annotated_image": "image_104_1.png",
+        "fundus_image": "image_103_1.png",
+        "Interpretation": "Epiretinal ERM Thin ",
+        "Age": "55",
+        "Location": "Parafoveal ",
+        "Case": "25",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Overall dark image with an even darker appearance of the perifovea. Peripapillary chorioretinal atrophy. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_105_0.png",
+        "annotated_image": "image_106_1.png",
+        "fundus_image": "image_105_1.png",
+        "Interpretation": "In this eye the foveal contour is interrupted, leaving a lamellar macular hole with associated LHEP. The RPE also has an  irregular appearance with the presence of multiple micro-drusen. Additionally, one can find a thin ERM. ",
+        "Age": "63",
+        "Location": "Fovea ",
+        "Case": "26",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Superior-temporal to the fovea, there is an area with a wrinkled appearance. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple micro drusen"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "LMH",
+                        "description": "With LHEP"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_107_0.png",
+        "annotated_image": "image_108_1.png",
+        "fundus_image": "image_107_1.png",
+        "Interpretation": "PR EZ interrupted ",
+        "Age": "84",
+        "Location": "Fovea ",
+        "Case": "27",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The IR image is dark, out of focus, and contains a central light artifact. However, it does reveal areas suspicious of drusen surrounding the macula. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple, small"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SDD",
+                        "description": "Reticular pseudodrusen"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_109_0.png",
+        "annotated_image": "image_110_1.png",
+        "fundus_image": "image_109_1.png",
+        "Interpretation": "This patient has multiple confluent drusen which interrupt the EZ at multiple points. These findings are consistent with intermediate AMD and leave this patient with an inferior visual prognosis. ",
+        "Age": "76",
+        "Location": "Fovea ",
+        "Case": "28",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple large drusen at the fovea. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple, confluent"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ fragmented"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_111_0.png",
+        "annotated_image": "image_112_1.png",
+        "fundus_image": "image_111_1.png",
+        "Interpretation": "There are multiple relatively large fluid-filled spaces around the fovea, causing only minimal to no retinal thickening. The  HRS likely represent exudate or lipid-laden macrophages – a sign of blood-retinal barrier breakdown, which in conjunction  with the microaneurysm, are classic signs of diabetic retinopathy. There is an interruption of the EZ at the fovea, leaving  this patient with a comparatively worse visual prognosis.  ",
+        "Age": "79",
+        "Location": "Fovea ",
+        "Case": "29",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of entire macula with multiple hyperreflective spots. Central light artifact. ",
+        "findings": [
+            {
+                "area": "Sub-retinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ is interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "No thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Inner and outer retina"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Round microaneurysm"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_113_0.png",
+        "annotated_image": "image_114_1.png",
+        "fundus_image": "image_113_1.png",
+        "Interpretation": "There are two hyperreflective drusen whose appearance is consistent with colloid drusen. The EZ, although noticeably altered, is not clearly interrupted. This patient is likely suffering from AMD. ",
+        "Age": "75",
+        "Location": "Fovea ",
+        "Case": "30",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Multiple hyperreflective spots scattered throughout the macula, with a larger concentration temporal to the disc. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple, hyperreflective"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "Interrupted EZ"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_115_0.png",
+        "annotated_image": "image_116_1.png",
+        "fundus_image": "image_115_1.png",
+        "Interpretation": "MH Full-thickness macular hole ",
+        "Age": "60",
+        "Location": "Fovea ",
+        "Case": "31",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "A dark, sickle-shaped alteration is centered at the fovea, and surrounded by hyporeflective alterations. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ and PR disrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Distinct"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_117_0.png",
+        "annotated_image": "image_118_1.png",
+        "fundus_image": "image_117_1.png",
+        "Interpretation": "This patient has a large fibrovascular PED with associated SRF, consistent with an active type 1 MNV. The PRs, including the ONL look thinned/atrophic, and the HRS in this context likely represent degenerated retinal tissue or macrophages engulfing it. ",
+        "Age": "87",
+        "Location": "Perifovea ",
+        "Case": "32",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "This poorly illuminated IR image with a central light artifact is almost insufficient for assessment. However, a hyporeflective area inferior to the macula can be noted. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "F-PED with associated SRF"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "Granulated/atrophic appearance"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to PR atrophy"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_119_0.png",
+        "annotated_image": "image_120_1.png",
+        "fundus_image": "image_119_1.png",
+        "Interpretation": "This patient has a fibrovascular PED with associated SRF, consistent with an active type 1 MNV. There is an area of RPE atrophy with signal hypertransmission (HT) posterior to it. The EZ is interrupted multiple times, and there is also localized PR atrophy – both indicating chronicity of the disease. The accumulation of IRF is likely due to a local retinal defect, and the adjacent HRS could represent degenerated retinal tissue or macrophages engulfing it. ",
+        "Age": "74",
+        "Location": "Parafoveal macula ",
+        "Case": "33",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Concentration of hyperreflective tissue central to the macula surrounded by multiple hyperreflective spots, and a hyporeflective parafoveal region. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, interrupted"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "F-PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "PR atrophy"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Localized"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to retinal degeneration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_121_0.png",
+        "annotated_image": "image_122_1.png",
+        "fundus_image": "image_121_1.png",
+        "Interpretation": "In this scan, we can see two areas of RPE and PR atrophy with adjacent signal hypertransmission, as well as multiple drusen of varying sizes. These findings are very consistent with a GA secondary to AMD (cRORA). In addition, in the preretinal area, one can find a VO and the posterior hyaloid. ",
+        "Age": "80",
+        "Location": "Fovea ",
+        "Case": "34",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple hyperreflective areas with visualized choroidal vessels. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Interrupted, elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusen"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "GA (cRORA and iRORA)"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "Atrophy"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    },
+                    {
+                        "alteration": "VO",
+                        "description": "Vitreous opacity"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_123_0.png",
+        "annotated_image": "image_124_1.png",
+        "fundus_image": "image_123_1.png",
+        "Interpretation": "The area of shallow RPE irregularity shows no DLS and no signs of active exudation – most likely representing a drusenoid alteration. The druse has a hyporeflective and homogeneous appearance. The tilted disc and chorioretinal atrophy are common in myopic patients so, we are very likely looking at a myopic patient with early signs of AMD. ",
+        "Age": "66",
+        "Location": "Fovea ",
+        "Case": "35",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The foveal and parafoveal areas have a slightly irregular appearance. In addition, there is peripapillary chorioretinal atrophy, as well as a tilted disc. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusen"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "Peripapillary atrophy"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_125_0.png",
+        "annotated_image": "image_126_1.png",
+        "fundus_image": "image_125_1.png",
+        "Interpretation": "The two shallow irregular RPE elevations (SIRE) with a positive DLS are highly suspicious for quiescent MNV. The HRS are mainly located around the ELM and could represent retinal degeneration or be a sign of AMD progression. The EZ is interrupted at the fovea, leaving this patient with an inferior visual prognosis. ",
+        "Age": "83",
+        "Location": "Fovea ",
+        "Case": "36",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of the perifoveal area with bright confluent alterations over a darker background. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "Heterogenous irregular PED elevation"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ fragmentation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated with RPE alterations and PR-atrophy"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_127_0.png",
+        "annotated_image": "image_128_1.png",
+        "fundus_image": "image_127_1.png",
+        "Interpretation": "There is a shallow fibrovascular PED with associated SRF and IRF – these findings are highly suspicious for a type 1 MNV. In addition, the PRs above the PED are ill-defined, and the ones above the SRF show signs of degeneration. The HRS could represent cellular debris or engulfing macrophages. Finally, there is also a thin ERM. ",
+        "Age": "74",
+        "Location": "Parafovea ",
+        "Case": "37",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There is an irregular appearance of the macula with bright confluent areas over a darker background. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED with associated SRF"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ ill defined, thinning of the PR layer"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated with degeneration"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Present"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_129_0.png",
+        "annotated_image": "image_130_1.png",
+        "fundus_image": "image_129_1.png",
+        "Interpretation": "The SIRE with a DLS and adjacent SRF is highly suspicious for an active type 1 MNV. In addition, the EZ is ill-defined, and the PRs have a granulated appearance, suggesting a prolonged course of the disease, resulting in a comparatively worse visual prognosis. As there are no signs of drusen and the choroid is not fully visible, CSC is a possible differential diagnosis in this case. ",
+        "Age": "62",
+        "Location": "Fovea ",
+        "Case": "38",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular, darkened appearance of the parafoveal area with a concentration of hyperreflective spots in the fovea. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS and SRF"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated with RPE alteration"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "PRs with granulated appearance"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated with degeneration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_131_0.png",
+        "annotated_image": "image_132_1.png",
+        "fundus_image": "image_131_1.png",
+        "Interpretation": "This scan shows a fibrovascular PED with associated SHRM and adjacent accumulation of SRF and IRF. In addition, there are multiple confluent drusen as well as a subretinal drusenoid deposit. Thus, this patient is very likely suffering from an active mixed Type 1 and 2 MNV secondary to AMD. ",
+        "Age": "77",
+        "Location": "Fovea ",
+        "Case": "39",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The IR image is misaligned, poorly illuminating the macula inferiorly. There is a widespread scattering of reticular pseudodrusen and drusen surrounding a hyporeflective area at the fovea. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular, interrupted"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED, multiple drusen"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SDD",
+                        "description": "Reticular pseudodrusen"
+                    },
+                    {
+                        "alteration": "SHRM",
+                        "description": "Fuzzy appearance with associated SRF and IRF"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Due to exudation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudates, pigment migration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_133_0.png",
+        "annotated_image": "image_134_1.png",
+        "fundus_image": "image_133_1.png",
+        "Interpretation": "This patient has a pronounced CME with SRF accumulation. The HRS likely represent exudates or lipid-laden macrophages – indicating a retinal vascular disease. In conjunction with the IR image, the findings are consistent with a CME secondary to a BRVO. The EZ has an irregular appearance that, however, could be due to shadowing artifacts. ",
+        "Age": "67",
+        "Location": "Fovea ",
+        "Case": "40",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Extended hyporeflective area reaching from the superior vascular arcade down to the fovea. In addition, two hyperreflective spots and a streaky hemorrhage are present. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated with CME"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ irregularity"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudate"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_135_0.png",
+        "annotated_image": "image_136_1.png",
+        "fundus_image": "image_135_1.png",
+        "Interpretation": "The scan reveals areas of thickened RNFL with minimal adjacent signal blockage, consistent with cotton wool spots (CWS). In conjunction with the IR image (microaneurysms), we are probably looking at a patient with diabetic retinopathy. ",
+        "Age": "68",
+        "Location": "Periphery ",
+        "Case": "41",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "A picture of the superior mid-peripheral retina. There are multiple slightly hyporeflective areas. In the inferior part of the image, there are multiple MAs and two HRS. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular, elevated"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IHRM",
+                        "description": "CWS"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_137_0.png",
+        "annotated_image": "image_138_1.png",
+        "fundus_image": "image_137_1.png",
+        "Interpretation": "Multiple SDD (a hallmark of AMD), most notably seen in the IR image, represent a risk factor for type 3 MNV. The accumulation of fuzzy-looking IHRM and associated IRF, is consistent with an active type 3 MNV. Additionally, there are multiple points of EZ interruption and a thin ERM is present. ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "42",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of the entire fundus with large areas with reticular pseudodrusen mainly in the peripheral macula. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular"
+                    },
+                    {
+                        "alteration": "SDD",
+                        "description": "Subretinal drusenoid deposits"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ fragmented"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IHRM",
+                        "description": "Medium reflectivity, fuzzy"
+                    },
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread, associated to IHRM"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Different entities"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_139_0.png",
+        "annotated_image": "image_140_1.png",
+        "fundus_image": "image_139_1.png",
+        "Interpretation": "Subretinal SRF Retinal detachment ",
+        "Age": "57",
+        "Location": "Extramacular ",
+        "Case": "43",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Extensive and dark curtain-shaped alteration to the inferior and inferotemporal arcades. ",
+        "findings": [
+            {}
+        ]
+    },
+    {
+        "raw_image": "image_141_0.png",
+        "annotated_image": "image_142_1.png",
+        "fundus_image": "image_141_1.png",
+        "Interpretation": "In this scan, we can see multiple drusen and an area of incomplete RPE and PR atrophy (iRORA). Right above the area of atrophy is an accumulation of HRS, likely representing degenerated retinal tissue or macrophages engulfing it. This patient very likely suffers from GA secondary to AMD (iRORA). Additionally, there is a thin ERM. ",
+        "Age": "84",
+        "Location": "Parafovea ",
+        "Case": "44",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There is a gross irregular appearance of the macular region with noted drusen and pseudodrusen. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, interrupted"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Multiple drusen"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "iRORA"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "PR atrophy"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to PR atrophy"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_143_0.png",
+        "annotated_image": "image_144_1.png",
+        "fundus_image": "image_143_1.png",
+        "Interpretation": "A large fibrovascular PED with associated SRF is a finding very consistent with an active type 1 MNV. The internal reflectivity of the PED is altered, with the right hemisphere presenting signal blockage, which could be due to subretinal hemorrhage. The EZ is interrupted and the HRS are located around the ELM and could be a sign of PR degeneration. The increased reflectivity of the ONL over the SRF very likely represents a Henle fiber layer - reflex artifact (HFL-RA). ",
+        "Age": "78",
+        "Location": "Parafoveal ",
+        "Case": "45",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large hyperreflective ring encompassing a hyporeflective area through the macula. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED with associated SRF"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Due to exudation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Outer retina"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_145_0.png",
+        "annotated_image": "image_146_1.png",
+        "fundus_image": "image_145_1.png",
+        "Interpretation": "This patient presents atrophic inner retinal layers on the right half of the scan, indicating a past ischemic event. On the left side of the scan, there is some medium reflective material in the epi-/preretinal area, which is highly suspicious of preretinal neovascularization. Therefore, this patient is likely suffering from secondary preretinal neovascularization after retinal ischemia. The HRS could represent either extravasated lipids or degenerated retinal tissue. ",
+        "Age": "68",
+        "Location": "Perifovea ",
+        "Case": "46",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The inferior temporal quadrant has an irregular appearance with missing retinal vessels. There are multiple grape-like, irregular, hyporeflective alterations. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Inner retina"
+                    },
+                    {
+                        "alteration": "IRL",
+                        "description": "Thinning of inner retinal layers"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PRNV",
+                        "description": "Preretinal neovascularisation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_147_0.png",
+        "annotated_image": "image_148_1.png",
+        "fundus_image": "image_147_1.png",
+        "Interpretation": "This patient has multiple fluid-filled spaces resulting in a thickening of the retina (CME) and SRF accumulation associated with the CME. The HRS around the OPL most likely represent exudate, indicating a retinal vascular disease and in conjunction with the findings in the IR Image (hard exudates and hemorrhages) this patient is very likely suffering from a diabetic macular edema. Additionally, the posterior hyaloid is visible in this scan. ",
+        "Age": "63",
+        "Location": "Fovea ",
+        "Case": "47",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Multiple bright and dark spots – consistent with exudates and retinal hemorrhages, respectively; large hyporeflective area consistent with fluid accumulation ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Correlated to CME"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Predominantly around the OPL"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_149_0.png",
+        "annotated_image": "image_150_1.png",
+        "fundus_image": "image_149_1.png",
+        "Interpretation": "On the left side of the scan, the retina is detached from the RPE, and there is a large space with SRF. In addition, the detachment is associated with a widespread accumulation of IRF that results in diffuse retinal edema. In conjunction with the IR image, we can confidently diagnose a retinal detachment. The HRS in the vitreous could represent blood secondary to a retinal tear. ",
+        "Age": "55",
+        "Location": "Inferior arcade ",
+        "Case": "48",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The inferior left quadrant presents a demarcated  hyporeflective zone. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Widespread SRF accumulation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "Vitreous",
+                        "description": "Multiple tiny HRS"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_151_0.png",
+        "annotated_image": "image_152_1.png",
+        "fundus_image": "image_151_1.png",
+        "Interpretation": "Preretinal VMA Vitreomacular adhesion ",
+        "Age": "54",
+        "Location": "Parafovea ",
+        "Case": "49",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large hyporeflective area reaching from the superior vascular arcade to the fovea. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Intraretinal haemorrhage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_153_0.png",
+        "annotated_image": "image_154_1.png",
+        "fundus_image": "image_153_1.png",
+        "Interpretation": "The inner retinal layers appear hyperreflective and diffusely swollen, causing  posterior signal blockage. These findings  represent intracellular edema, secondary to an ischemic event. The fovea appears brighter, which in conjunction with the  hyperreflective inner retinal  layers, is a common finding in eyes with a central retinal artery occlusion. Additionally, the EZ  is interrupted on the right side of the fovea. ",
+        "Age": "72",
+        "Location": "Fovea ",
+        "Case": "50",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Diffusely blurred IR image. The arteries are thin, and the fovea shines bright in the center of the image. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    },
+                    {
+                        "alteration": "IRL",
+                        "description": "Hyperreflective inner retinal layers"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_155_0.png",
+        "annotated_image": "image_156_1.png",
+        "fundus_image": "image_155_1.png",
+        "Interpretation": "IHRM Microaneurysm ",
+        "Age": "62",
+        "Location": "Fovea ",
+        "Case": "51",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There is a hyporeflective area and concentrated dark spots dispersed around the temporal perifoveal area. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudates"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_157_0.png",
+        "annotated_image": "image_158_1.png",
+        "fundus_image": "image_157_1.png",
+        "Interpretation": "Epiretinal ERM Loss of foveal contour ",
+        "Age": "74",
+        "Location": "Fovea ",
+        "Case": "52",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Wrinkling of the retinal surface, irregular appearance, central hyperreflective spot. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Thickened, clumped"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "ELM interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Tractional edema"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_159_0.png",
+        "annotated_image": "image_160_1.png",
+        "fundus_image": "image_159_1.png",
+        "Interpretation": "There is a significant accumulation of SHRM with associated SRF. The hyperreflective band underneath the PR could represent a fibrotic membrane and the HRS likely represent cellular debris or engulfing macrophages. Considering the slightly tilted disc and the peripapillary chorioretinal atrophy (IR image) this picture is consistent with an active type 2 MNV in the setting of myopia. Additionally, in the preretinal area one can find a temporally pronounced ERM. ",
+        "Age": "62",
+        "Location": "Fovea ",
+        "Case": "53",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "This patient has peripapillary chorioretinal atrophy with an hyporeflective area right next to it; there is wrinkling of the retinal surface indicative of an ERM. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Fuzzy with associated SRF"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Due to exudation from SHRM"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "PR debris"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Epiretinal membrane"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_161_0.png",
+        "annotated_image": "image_162_1.png",
+        "fundus_image": "image_161_1.png",
+        "Interpretation": "This patient has multiple confluent drusen and subretinal drusenoid deposits. There is a small area of RPE atrophy (iRORA) with adjacent signal hypertransmission and a tiny accumulation of IRF (further fluid must be ruled out on the other scans) Furthermore there is an accumulation of hyporeflective material, which could represent protein-rich fluid right at the fovea. The HRS are associated with PEDs, likely representing pigment migration. This patient has AMD and a suspicious exudative process that should be further investigated. ",
+        "Age": "76",
+        "Location": "Fovea ",
+        "Case": "54",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are large areas of confluent drusen as well as reticular pseudodrusen; a central light-reflex-artifact is present. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular, interrupted"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Multiple confluent drusen"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "iRORA"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SDD",
+                        "description": "Reticular pseudodrusen"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Local"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_163_0.png",
+        "annotated_image": "image_164_1.png",
+        "fundus_image": "image_163_1.png",
+        "Interpretation": "This patient has multiple fluid-filled spaces spread across the scan. Multiple hard exudates indicate a retinal vascular disease, and in addition, the EZ is interrupted right at the fovea, leaving this patient with a comparatively worse visual prognosis. The findings are consistent with diabetic macular edema. There is a thin ERM visible on the right side. ",
+        "Age": "68",
+        "Location": "Fovea ",
+        "Case": "55",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Perifoveal bright spots – consistent with exudate. (circinate figure) The perifoveal area has a darker appearance than the extramacular area. ",
+        "findings": [
+            {
+                "area": "Sub-retinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudate"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_165_0.png",
+        "annotated_image": "image_166_1.png",
+        "fundus_image": "image_165_1.png",
+        "Interpretation": "This patient has multiple drusen and a widespread F-PED without significant signs of exudation. In this scan, one can view what could be the cross-section of a neo-vessel within the heterogenous PED. The findings are consistent with a quiescent type 1 MNV secondary to AMD. The HRS are associated with RPE alterations and could represent pigment migration. In addition, there is a pronounced ERM that is causing wrinkling of the RNFL. ",
+        "Age": "79",
+        "Location": "Periphery ",
+        "Case": "56",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The retinal surface appears wrinkled with two hyperreflective spots and smaller disseminated bright spots scattered centrally. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, irregular"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "F-PED"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Outer retina"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Wrinkling of RNFL"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_167_0.png",
+        "annotated_image": "image_168_1.png",
+        "fundus_image": "image_167_1.png",
+        "Interpretation": "The most striking feature of this eye is the double-layered hyperreflective SHRM, which is very consistent with fibrotic scar tissue. There is no visible EZ or ELM, indicating PR atrophy. Additionally, the ORT represents a rearrangement of the PRs affirming the longevity and stability of the disease. The signal hypertransmission is the result of RPE atrophy. We are looking at a patient with a large disciform scar. Additionally, there is an ERM that is only mildly affecting the retinal tissue. ",
+        "Age": "88",
+        "Location": "Parafovea ",
+        "Case": "57",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large hyperreflective area and wrinkled appearance of the entire macula. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "Choroid",
+                        "description": "Thinned"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Atrophy"
+                    },
+                    {
+                        "alteration": "SHRM",
+                        "description": "Hyperreflective scar tissue"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ and ELM atrophy, ORT"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Epiretinal membrane"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_169_0.png",
+        "annotated_image": "image_170_1.png",
+        "fundus_image": "image_169_1.png",
+        "Interpretation": "This patient has multiple drusen of varying sizes consistent with AMD. At the apex of the large hyporeflective PED, there is a SHRM-suspect area with an associated minimal SRF accumulation, which, could represent pseudo-SRF as the high PED may cause a detachment of the retina with minimal SRF accumulation. An OCT-A or FA would help to rule out an MNV. The EZ, is interrupted, negatively affecting the visual prognosis. ",
+        "Age": "74",
+        "Location": "Fovea ",
+        "Case": "58",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Multiple drusen in the macular area and a hyperreflective spot right at the fovea. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusen, (drusenoid PED)"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    },
+                    {
+                        "alteration": "SHRM",
+                        "description": "Suspect"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Suspect"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_171_0.png",
+        "annotated_image": "image_172_1.png",
+        "fundus_image": "image_171_1.png",
+        "Interpretation": "The most striking feature of this eye is the significant accumulation of SRF as well as a S-PED. The SHRM is suspect to an MNV but could also represent pigment migration. The PR layer over the SRF is ill-defined, which could indicate PR atrophy and the HRS likely represents migrated RPE. In the preretinal area a thin hyperreflective area on the left side could represent an ERM. It could also represent the hyaloid as it is not uncommon to have vitreoschisis; on the right side, the posterior hyaloid is visible. Enhanced depth imaging would allow us to better visualize choroidal thickness (CSC) and an OCT-A/FA could rule out an MNV. ",
+        "Age": "74",
+        "Location": "Parafovea ",
+        "Case": "59",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large hyporeflective area and multiple bright speckled spots. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Hyporeflective  S-PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation"
+                    },
+                    {
+                        "alteration": "SHRM",
+                        "description": "Fuzzy"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Predominantly in the outer retina"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin ERM or Hyaloid"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_173_0.png",
+        "annotated_image": "image_174_1.png",
+        "fundus_image": "image_173_1.png",
+        "Interpretation": "This scan’s most striking feature is the area of complete RPE and PR atrophy, which is consistent with GA in AMD (cRORA). Additionally, there are multiple small drusen. In the preretinal area, one can see a thin ERM and the posterior hyaloid. ",
+        "Age": "89",
+        "Location": "Parafovea ",
+        "Case": "60",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The macular region has an irregular appearance, and there is a large round area of RPE atrophy with visualized choroidal vessels. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Interrupted"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "GA (cRORA)"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusen"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "PR atrophy"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_175_0.png",
+        "annotated_image": "image_176_1.png",
+        "fundus_image": "image_175_1.png",
+        "Interpretation": "Findings ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "61",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "A bright light-reflex-artifact can be seen at the fovea as well as some irregularity, especially in the superior perifoveal area. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular, elevated"
+                    },
+                    {
+                        "alteration": "Drusen",
+                        "description": "Multiple"
+                    },
+                    {
+                        "alteration": "We are looking at a patient with cuticular drusen with its classic sawtooth appearance. This patient has AMD.",
+                        "description": "Interpretation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_177_0.png",
+        "annotated_image": "image_178_1.png",
+        "fundus_image": "image_177_1.png",
+        "Interpretation": "This patient has a widespread accumulation of SRF, causing a detachment of the retina. It is accompanied by a diffuse  retinal edema. There is a HRS in the vitreous, which could represent blood or an opacity. In conjunction with the findings in the IR image, this patient is likely suffering from a retinal detachment. ",
+        "Age": "62",
+        "Location": "Parafovea ",
+        "Case": "62",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The superior hemisphere appears hyporeflective with a well-demarcated margin. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Widespread SRF accumulation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "VO",
+                        "description": "HRS in the vitreous"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_179_0.png",
+        "annotated_image": "image_180_1.png",
+        "fundus_image": "image_179_1.png",
+        "Interpretation": "The most striking feature of this scan is the severe disorganization of the retinal layers. The ERM seems to cause folding (invagination) of the retina, displacing a retinal vessel. ",
+        "Age": "70",
+        "Location": "Parafovea ",
+        "Case": "63",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Ventral hyporeflective area and a wrinkled appearance temporal to the disc. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRL",
+                        "description": "Disorganization"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Epiretinal membrane"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_181_0.png",
+        "annotated_image": "image_182_1.png",
+        "fundus_image": "image_181_1.png",
+        "Interpretation": "CWS Cotton wool spot ",
+        "Age": "67",
+        "Location": "Fovea ",
+        "Case": "64",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The entire macula has a dark appearance. Notice the flame-shaped and blot-shaped hemorrhages as well as microaneurysms. The bright spots likely represent hard exudates. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated to CME"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudates"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_183_0.png",
+        "annotated_image": "image_184_1.png",
+        "fundus_image": "image_183_1.png",
+        "Interpretation": "This patient suffers from a sub-ILM hemorrhage that presents as hyperreflective material, causing posterior signal blockage (signal-b). Otherwise, this scan looks inconspicuous. ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "65",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "A well-demarcated hyporeflective area right at the fovea and a smaller one in the superior perifoveal section. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IHRM",
+                        "description": "Local thickening with signal blockage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_185_0.png",
+        "annotated_image": "image_186_1.png",
+        "fundus_image": "image_185_1.png",
+        "Interpretation": "There is a large heterogenous, hyporeflective PED right in the center of the scan, likely representing a fibrovascular PED. The shadowy contours inside the F-PED could represent a neovascular membrane. On the right side of the F-PED, one can find SHRM-suspect material and an accumulation of SRF. We are looking at an active MNV, which is a type 1 variant – it could, however, also have a type 2 component. In conjunction with the PR thinning, the HRS likely represent degenerated retinal tissue or macrophages engulfing it. ",
+        "Age": "72",
+        "Location": "Fovea ",
+        "Case": "66",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Hyporeflective appearance of the foveal and perifoveal area – consistent with fluid accumulation. Notice the light- reflex artifact right in the center. There is some wrinkling of the retinal surface along the superior vascular arcade. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Medium reflective"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "Granulated and atrophic appearance"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to PR thinning"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_187_0.png",
+        "annotated_image": "image_188_1.png",
+        "fundus_image": "image_187_1.png",
+        "Interpretation": "ERM Thin ",
+        "Age": "84",
+        "Location": "Parafovea ",
+        "Case": "67",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The fovea has a very dark appearance and is surrounded by a hyporeflective perifovea. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Solid and fuzzy"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudate"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_189_0.png",
+        "annotated_image": "image_190_1.png",
+        "fundus_image": "image_189_1.png",
+        "Interpretation": "Preretinal PH Posterior hyaloid ",
+        "Age": "74",
+        "Location": "Fovea ",
+        "Case": "68",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Speckled hyperreflective spots are noted around the macular region with a hyporeflective area left to the fovea and a light-reflex artifact in the center. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusen"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted, PR atrophy"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_191_0.png",
+        "annotated_image": "image_192_1.png",
+        "fundus_image": "image_191_1.png",
+        "Interpretation": "There is a large multilayered fibrovascular PED without SRF accumulation. This patient has likely already received multiple anti-VEGF injections (multilayered appearance of the F-PED). Therefore, this eye is highly suspicious of a quiescent type 1 MNV. ",
+        "Age": "70",
+        "Location": "Parafovea ",
+        "Case": "69",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of the parafoveal region with hypo- and hyperreflective areas. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Fibrovascular PED"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Around OPL"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Rare"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_193_0.png",
+        "annotated_image": "image_194_1.png",
+        "fundus_image": "image_193_1.png",
+        "Interpretation": "Intraretinal HRS Associated to PR atrophy ",
+        "Age": "73",
+        "Location": "Fovea ",
+        "Case": "70",
+        "Scan Quality": "Reduced quality without artifacts ",
+        "IR Image": "Large, hyporeflective demarcated circle around the temporal macula, and an irregular appearance of the fovea. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "F-PED"
+                    },
+                    {
+                        "alteration": "SHRM",
+                        "description": "Suspect"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated to F-PED"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "Atrophic appearance of PRs"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_195_0.png",
+        "annotated_image": "image_196_1.png",
+        "fundus_image": "image_195_1.png",
+        "Interpretation": "HRS Associated to RPE alteration and PR atrophy ",
+        "Age": "83",
+        "Location": "Fovea ",
+        "Case": "71",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Vignette artifact, irregular appearance of the retina in the left portion of the image. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular, thinned"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Exudation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "PR atrophy"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_197_0.png",
+        "annotated_image": "image_198_1.png",
+        "fundus_image": "image_197_1.png",
+        "Interpretation": "Preretinal ERM Thin ",
+        "Age": "76",
+        "Location": "Fovea ",
+        "Case": "72",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Widespread dark area around the macula. Peripheral hyperreflective spots. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudates"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Microaneurysm"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_199_0.png",
+        "annotated_image": "image_200_1.png",
+        "fundus_image": "image_199_1.png",
+        "Interpretation": "We are looking at an ambiguous case that presents two components. Firstly, there is a suspect lamellar macular hole with associated retinal edema. (The ERM and LHEP support the suspect diagnosis of a lamellar macular hole.) Secondly, a suspicious SHRM with SRF needs further diagnostics (OCT-A, FA) to rule out an MNV. As the EZ is interrupted right at the fovea, this patient has a reduced VA-prognosis. ",
+        "Age": "68",
+        "Location": "Perifovea/fovea ",
+        "Case": "73",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Hyperreflective irregularities around the fovea with an attenuated hyporeflective area and some wrinkles close to the superior vascular arcade can be seen. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular, clumped"
+                    },
+                    {
+                        "alteration": "SRHM",
+                        "description": "Fuzzy with SRF"
+                    },
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated to RPE alteration"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Local edema"
+                    },
+                    {
+                        "alteration": "RL",
+                        "description": "Lamellar macular hole"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "LHEP",
+                        "description": "Associated to LMH"
+                    },
+                    {
+                        "alteration": "ERM",
+                        "description": "Distinct"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_201_0.png",
+        "annotated_image": "image_202_1.png",
+        "fundus_image": "image_201_1.png",
+        "Interpretation": "Preretinal PH Posterior hyaloid ",
+        "Age": "64",
+        "Location": "Fovea ",
+        "Case": "74",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The foveal and perifoveal area has a hyporeflective appearance, most likely due to fluid accumulation. The veins appear tortuous. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudate"
+                    },
+                    {
+                        "alteration": "IHRM",
+                        "description": "Hemorrhage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_203_0.png",
+        "annotated_image": "image_204_1.png",
+        "fundus_image": "image_203_1.png",
+        "Interpretation": "Preretinal PH Posterior hyaloid ",
+        "Age": "64",
+        "Location": "Fovea ",
+        "Case": "75",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The inferior temporal quadrant has a very dark appearance likely due to fluid accumulation, and the inferior temporal branch vein appears tortuous. ",
+        "findings": [
+            {
+                "area": "Sub-retinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Associated to CME"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Causing retinal thickening"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Exudates"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_205_0.png",
+        "annotated_image": "image_206_1.png",
+        "fundus_image": "image_205_1.png",
+        "Interpretation": "The central PED has a hypo- and a hyperreflective component that is in part drusenoid but also suspect to a fibrovascular process. There is associated suspect SHRM, however, without SRF. Thus, it is an ambiguous case that would need further investigation (e.g., OCT-A, FA). The HRS are associated with an alteration of the RPE and could represent migrated pigment cells. This patient has AMD. ",
+        "Age": "74",
+        "Location": "Periphery ",
+        "Case": "76",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of the macula; the inferior temporal retinal artery is taking an unusual course, and there are multiple bright areas temporally. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Hypo- and hyperreflective PED; druse"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Uncertain SHRM without SRF"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration"
+                    },
+                    {
+                        "alteration": "Preretinal",
+                        "description": "VMA"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_207_0.png",
+        "annotated_image": "image_208_1.png",
+        "fundus_image": "image_207_1.png",
+        "Interpretation": "Vitreous Posterior hyaloid ",
+        "Age": "46",
+        "Location": "Fovea ",
+        "Case": "77",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "This very dark image is difficult to assess. Peripapillary chorioretinal atrophy is visible. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "Layers",
+                        "description": "Dissociated layers between ONL and OPL"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_209_0.png",
+        "annotated_image": "image_210_1.png",
+        "fundus_image": "image_209_1.png",
+        "Interpretation": "Findings ",
+        "Age": "62",
+        "Location": "Fovea ",
+        "Case": "78",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The perifoveal area appears a little darker than the rest of the fundus. Central light reflex artifact. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "Widespread SRF accumulation"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    },
+                    {
+                        "alteration": "This patient has a widespread accumulation of SRF - we are looking at a shallow macula-off retinal detachment.",
+                        "description": "Interpretation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_211_0.png",
+        "annotated_image": "image_212_1.png",
+        "fundus_image": "image_211_1.png",
+        "Interpretation": "The most striking feature of this eye is the full-thickness macular hole with a complete disruption of all retinal layers down to the RPE. It is accompanied by an accumulation of IRF on both sides of the hole. Additionally, the posterior hyaloid is visible. ",
+        "Age": "64",
+        "Location": "Fovea ",
+        "Case": "79",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "A volcano-like appearance of the foveal area. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ and PR disrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRF",
+                        "description": "Associated to FTMH"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "MH",
+                        "description": "Full thickness macular hole"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_213_0.png",
+        "annotated_image": "image_214_1.png",
+        "fundus_image": "image_213_1.png",
+        "Interpretation": "There is a significant amount of SRF without a definite site of origin. The HRS around the ELM could be first signs of retinal  degeneration. There are subretinal deposits, that  likely do not represent  SDD as this patient is relatively young. Enhanced depth imaging would allow us to visualize a thickened choroid, as this patient is suspect to CSC. ",
+        "Age": "44",
+        "Location": "Fovea ",
+        "Case": "80",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The fovea and perifoveal areas have a hyporeflective appearance with an irregular hyperreflective formation above them. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SRF",
+                        "description": "SRF accumulation"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Around the ELM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_215_0.png",
+        "annotated_image": "image_216_1.png",
+        "fundus_image": "image_215_1.png",
+        "Interpretation": "This scan shows increased reflectivity and swelling of the inner retinal layers - a picture consistent with retinal ischemia  due to a retinal artery occlusion. ",
+        "Age": "79",
+        "Location": "Fovea ",
+        "Case": "81",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Diffusely blurred IR image ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRL",
+                        "description": "Hyperreflective inner retinal layer"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_217_0.png",
+        "annotated_image": "image_218_1.png",
+        "fundus_image": "image_217_1.png",
+        "Interpretation": "There is focused and isolated atrophy of the PRs (micro hole), sparing the remaining layers. This patient is suffering from  solar retinopathy after an accident with a strong laser pointer. ",
+        "Age": "26",
+        "Location": "Fovea ",
+        "Case": "82",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Hyporeflective center surrounded by a thin hyperreflective halo and a medium reflective spot at 12 o’clock. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ and PR atrophy (micro hole)"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_219_0.png",
+        "annotated_image": "image_220_1.png",
+        "fundus_image": "image_219_1.png",
+        "Interpretation": "This eye presents a SIRE with a distinct DLS, which is highly suspicious for an MNV. The SHRM is medium reflective, not yet a scar, possibly representing matured fibrovascular material without substantial leakage. There is RPE and PR atrophy above the SHRM – in conjunction with the ORT, it is indicative of a longstanding, stable disease state, without active leakage. Additionally, there is an ERM that is only mildly affecting the underlying retina. ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "83",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Hyperreflective area inferior to the fovea consistent with scar tissue. The wrinkled appearance is indicative of an ERM. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular, elevated, atrophic"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Drusenoid/Fibrovascular"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With  DLS"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Fuzzy, medium reflective"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "Atrophy,  ORT"
+                    },
+                    {
+                        "alteration": "Epiretinal",
+                        "description": "ERM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_221_0.png",
+        "annotated_image": "image_222_1.png",
+        "fundus_image": "image_221_1.png",
+        "Interpretation": "The most striking feature of this scan is the fluid accumulation that results in a serous PED. An EDI-scan would allow complete visualization of the choroid, possibly revealing a pachychoroid and CSC as the underlying cause for the S-PED. There are no other obvious alterations, neither in this scan or the IR image. ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "84",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Central hyporeflective area indicating fluid accumulation with overlying speckled hyperreflective spots. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Serous PED"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_223_0.png",
+        "annotated_image": "image_224_1.png",
+        "fundus_image": "image_223_1.png",
+        "Interpretation": "This patient presents with diffusely swollen and hyperreflective inner retinal layers – a picture consistent with retinal ischemia. (Likely due to a central retinal artery occlusion) ",
+        "Age": "68",
+        "Location": "Fovea ",
+        "Case": "85",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Blurred looking fundus with fading retinal vessels. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRL",
+                        "description": "Hyperreflective appearance"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_225_0.png",
+        "annotated_image": "image_226_1.png",
+        "fundus_image": "image_225_1.png",
+        "Interpretation": "This patient has an accumulation of heterogeneous, medium to hyperreflective material in the subretinal area. The PR layer is well-demarcated, making an infiltrating process, like a MNV, rather unlikely – it is a picture consistent with a vitelliform macular dystrophy. However, for a definite diagnosis, further diagnostics such as color fundus photography, autofluorescence, OCT-A, or FA must be obtained. The PRs show first reactions to the prolonged detachment (HRS, irregular appearance) ",
+        "Age": "78",
+        "Location": "Parafovea ",
+        "Case": "86",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There is a well demarcated hyporeflective area with a hyperreflective band on top of it. Additionally, hypo- and hyperreflective areas are spread across the fundus. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Fading"
+                    },
+                    {
+                        "alteration": "Vitelliform",
+                        "description": "Subretinal Vitelliform material"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Outer retina"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_227_0.png",
+        "annotated_image": "image_228_1.png",
+        "fundus_image": "image_227_1.png",
+        "Interpretation": "There are multiple hyperreflective sections within the inner retinal layers, likely representing areas of ischemia – a picture consistent with paracentral acute middle maculopathy (PAMM). ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "87",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "This patient presents with tortuous vessels and there are band-like hyporeflective areas spread over the entire macula. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRL",
+                        "description": "Hyperreflectivity"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_229_0.png",
+        "annotated_image": "image_230_1.png",
+        "fundus_image": "image_229_1.png",
+        "Interpretation": "In this scan, we are looking at a patient with a thick ERM causing a deformation of the foveal contour, leading to the formation of a pseudo macular hole, which should not be mistaken as a lamellar macular hole. ",
+        "Age": "68",
+        "Location": "Fovea ",
+        "Case": "88",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "This patient has a volcano-like appearance of the macula with a circular striated pattern and a hyporeflective center. The hyporeflective veil in the inferior part of the image may represent a vitreous opacity. ",
+        "findings": [
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Epiretinal membrane"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_231_0.png",
+        "annotated_image": "image_232_1.png",
+        "fundus_image": "image_231_1.png",
+        "Interpretation": "The most striking feature of this eye is the IHRM with associated IRF that is likely representing a type 3 MNV. In addition, there is an area of RPE clumping and associated pigment migration (HRS). While the EZ is clearly interrupted at the area of pigment clumping, the EZ irregularities on the left side might only be due to shadowing from the overlying alterations. The HRS around the IHRM could represent extravasated lipids. On the left side of the scan, the retinal layers are significantly disorganized. ",
+        "Age": "68",
+        "Location": "Parafovea ",
+        "Case": "89",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Irregular appearance of the fovea as well as the temporal fundus. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Irregular, clumped"
+                    },
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IHRM",
+                        "description": "Medium reflective (fuzzy) with IRF"
+                    },
+                    {
+                        "alteration": "IRF",
+                        "description": "Widespread"
+                    },
+                    {
+                        "alteration": "HRS",
+                        "description": "Mainly outer retina"
+                    },
+                    {
+                        "alteration": "DRIL",
+                        "description": "Disorganization"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_233_0.png",
+        "annotated_image": "image_234_1.png",
+        "fundus_image": "image_233_1.png",
+        "Interpretation": "In this patient, the sectorial thinning of the inner retinal layers, points to a past ischemic event with subsequent retinal atrophy. In addition, there is some hyperreflective material in the epi/preretinal area, which most likely represents a preretinal neovascularization. Originating from the PRNV, membranous strands connect with the vitreous leading to the suspect diagnosis of a proliferative vitreoretinopathy (PVR). While the HRS in the vitreous likely represent blood, the entity of the intraretinal HRS is ambiguous and could represent dilated vessels of the capillary plexus or extravasated material. This patient is very likely suffering from a retinal vascular disease with secondary neovascularization. ",
+        "Age": "68",
+        "Location": "Perifovea ",
+        "Case": "90",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The macula appears irregular with alternating hypo- to medium reflective areas. A small blood pool seems to have formed along the inferior arcade and there is a dark grape- like formation next to the optic disk temporal to the inferior vein. ",
+        "findings": [
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Around the inner layers"
+                    },
+                    {
+                        "alteration": "IRL",
+                        "description": "Thinning"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "PRNV",
+                        "description": "Neovascularization"
+                    },
+                    {
+                        "alteration": "PH",
+                        "description": "Posterior hyaloid"
+                    },
+                    {
+                        "alteration": "VO",
+                        "description": "Blood cells"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_235_0.png",
+        "annotated_image": "image_236_1.png",
+        "fundus_image": "image_235_1.png",
+        "Interpretation": "The most striking feature of this scan is the area of complete RPE atrophy (cRORA) with an additional rearrangement of PR, forming ORT (indicating chronicity and stability of disease). There is a SIRE with a DLS, however, without signs of exudation. Additionally, a thin ERM is present. ",
+        "Age": "68",
+        "Location": "Perifovea ",
+        "Case": "91",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "Large hyperreflective area of GA with visualization of the choroidal vessels that is involving most of the macula. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated, interrupted"
+                    },
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS"
+                    },
+                    {
+                        "alteration": "Atrophy",
+                        "description": "cRORA"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "ORT"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration/PR atrophy"
+                    }
+                ]
+            },
+            {
+                "area": "Preretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Epiretinal membrane"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_237_0.png",
+        "annotated_image": "image_238_1.png",
+        "fundus_image": "image_237_1.png",
+        "Interpretation": "The most striking feature of this scan is the large serous PED with associated fuzzy looking SHRM. In conjunction with the findings in the IR image (reticular pseudodrusen), a mixed type (1+2) MNV secondary to AMD could be the basis for further diagnostics. The HRS could represent pigment migration and lipid exudates. ",
+        "Age": "78",
+        "Location": "Perifovea ",
+        "Case": "92",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are two hyporeflective areas with associated hyperreflective spots in the para-/perifoveal area. The reticular pseudodrusen cover large areas of the peripheral macula, sparing the fovea. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "RPE",
+                        "description": "Elevated"
+                    },
+                    {
+                        "alteration": "PED",
+                        "description": "Serous-PED"
+                    }
+                ]
+            },
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "SHRM",
+                        "description": "Medium reflective, fuzzy"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "HRS",
+                        "description": "Associated to RPE alteration and exudation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_239_0.png",
+        "annotated_image": "image_240_1.png",
+        "fundus_image": "image_239_1.png",
+        "Interpretation": "This patient has a severe disorganization of the inner retinal layers (DRIL) and a fragmented EZ, resulting in a comparatively poor visual prognosis. There are no clear indications of the underlying condition. ",
+        "Age": "68",
+        "Location": "Parafovea/fovea ",
+        "Case": "93",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "There are multiple subtle hyporeflective alterations spread across the macula. ",
+        "findings": [
+            {
+                "area": "Subretinal",
+                "content": [
+                    {
+                        "alteration": "PR",
+                        "description": "EZ interrupted"
+                    }
+                ]
+            },
+            {
+                "area": "Intraretinal",
+                "content": [
+                    {
+                        "alteration": "IRL",
+                        "description": "Disorganization"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "raw_image": "image_241_0.png",
+        "annotated_image": "image_242_1.png",
+        "fundus_image": "image_241_1.png",
+        "Interpretation": "This patient has a widespread SIRE with an evident DLS likely representing a quiescent MNV. This patient is at high risk for disease progression to an exudative form and should be monitored closely. Additionally, there is a thin ERM on the right side of the scan. ",
+        "Age": "68",
+        "Location": "Fovea ",
+        "Case": "94",
+        "Scan Quality": "Good with no artifacts ",
+        "IR Image": "The inferior half of the macula has a hyporeflective appearance, furthermore, there are alterations spread across the entire fundus. ",
+        "findings": [
+            {
+                "area": "Sub-RPE",
+                "content": [
+                    {
+                        "alteration": "SIRE",
+                        "description": "With DLS"
+                    }
+                ]
+            },
+            {
+                "area": "Epiretinal",
+                "content": [
+                    {
+                        "alteration": "ERM",
+                        "description": "Thin"
+                    }
+                ]
+            }
+        ]
+    }
+]

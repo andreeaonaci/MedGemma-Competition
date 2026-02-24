@@ -41,10 +41,10 @@ def render_diagnostic_chat_page():
             
         # 3. Randam imaginea intotdeauna din cache, independent de uploader
         if st.session_state.current_image_display is not None:
-            st.image(st.session_state.current_image_display, caption="Active Image Context", use_container_width=True)
+            st.image(st.session_state.current_image_display, caption="Active Image Context", width='stretch')
             
         # Am actualizat butonul pentru a curata atat chat-ul cat si imaginea salvata
-        if st.button("Clear Conversation & Image", use_container_width=True):
+        if st.button("Clear Conversation & Image", width='stretch'):
             st.session_state.chat_messages = []
             st.session_state.current_image_display = None
             st.session_state.current_image_base64 = None

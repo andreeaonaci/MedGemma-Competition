@@ -1,7 +1,12 @@
+import os
+import json
+from PIL import Image
+import requests
 import streamlit as st
 import numpy as np
 import cv2
-from PIL import Image
+import embeddings as emb_module
+import hybrid_search
 
 # IMPORT NOU: Aducem pagina de chat
 from diagnostic_chat_view import render_diagnostic_chat_page
@@ -13,6 +18,12 @@ from image_processing import operations
 from utils import helpers
 from ai_comparison_view import render_comparison_page
 from research_audit_view import render_research_audit_page
+from case_search_view import render_case_search_page
+
+CASES_JSON = "data/cases.json"
+CASES_NPZ = "cases.npz"
+IMAGES_DIR = "data/case_images"
+
 
 # 1. Configurare obligatorie pe prima linie
 st.set_page_config(page_title="MedGemma Local Ophthalmology Assistant", layout="wide")
@@ -27,12 +38,34 @@ if 'transferred_image' not in st.session_state:
 if 'processed_buffer' not in st.session_state:
     st.session_state.processed_buffer = None
 
-st.title("MedGemma Ophthalmology Diagnostic Assistant (Local)")
-st.info(
-    "Experimental application\n"
-    "Not a certified medical device\n"
-    "Does not replace clinical judgment"
-)
+# Custom CSS for better styling
+st.markdown("""
+    <style>
+    .main-header {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1f77b4;
+        margin-bottom: 0.5rem;
+    }
+    .disclaimer-box {
+        background-color: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1.5rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown('<h1 class="main-header">🏥 MedGemma Ophthalmology Assistant</h1>', unsafe_allow_html=True)
+st.markdown("""
+    <div class="disclaimer-box">
+        <strong>⚠️ Disclaimer:</strong><br>
+        • Experimental research application<br>
+        • Not a certified medical device<br>
+        • Does not replace clinical judgment
+    </div>
+""", unsafe_allow_html=True)
 
 # --- ELIMINAREA MODELULUI LOCAL ---
 # Modelul este acum rulat de serverul FastAPI in fundal.
@@ -41,18 +74,29 @@ model = None
 
 # --- SIDEBAR NAVIGATION ---
 with st.sidebar:
-    st.header("Navigation")
-    page_options = ["Diagnosis", "Comparison", "Image Processing", "AI Comparison between 2 images", "Research Audit"]
+    st.markdown("### 🧭 Navigation")
+    
+    # Define pages with icons
+    page_options = {
+        "🩺 Diagnosis": "Diagnosis",
+        "🔬 Comparison": "Comparison",
+        "🖼️ Image Processing": "Image Processing",
+        "🤖 AI Comparison": "AI Comparison between 2 images",
+        "📊 Research Audit": "Research Audit",
+    }
     
     st.write("---")
     
-    for page in page_options:
-        btn_type = "primary" if st.session_state.current_page == page else "secondary"
+    for display_name, page_key in page_options.items():
+        btn_type = "primary" if st.session_state.current_page == page_key else "secondary"
         
-        if st.button(page, type=btn_type, use_container_width=True):
-            if st.session_state.current_page != page:
-                st.session_state.current_page = page
+        if st.button(display_name, type=btn_type, use_container_width=True):
+            if st.session_state.current_page != page_key:
+                st.session_state.current_page = page_key
                 st.rerun()
+    
+    st.write("---")
+    st.caption("💡 Powered by MedGemma 4B")
 
 # ----------------- Pagina: Diagnosis (ACUM ESTE CHAT INTERACTIV) -----------------
 if st.session_state.current_page == "Diagnosis":
@@ -88,9 +132,9 @@ elif st.session_state.current_page == "Comparison":
                 st.subheader("Similarity Score")
                 st.write(f"{sim_metric}: {score:.4f}")
                 col1, col2 = st.columns(2)
-                col1.image(aligned_a, caption="Aligned Image A", use_container_width=True)
-                col2.image(aligned_b, caption="Aligned Image B", use_container_width=True)
-                st.image(heatmap, caption="Difference Heatmap", use_container_width=True)
+                col1.image(aligned_a, caption="Aligned Image A", width='stretch')
+                col2.image(aligned_b, caption="Aligned Image B", width='stretch')
+                st.image(heatmap, caption="Difference Heatmap", width='stretch')
             except Exception as e:
                 st.error(f"Error during comparison: {e}")
 
@@ -166,7 +210,7 @@ elif st.session_state.current_page == "Image Processing":
 
     if st.session_state.processed_buffer is not None:
         st.subheader("Processed Image 1")
-        st.image(st.session_state.processed_buffer, use_container_width=True)
+        st.image(st.session_state.processed_buffer, width='stretch')
         st.caption(f"Metadata to transfer: {st.session_state.get('processed_buffer_ops', 'None')}")
 
         if st.button("Send to Research Audit & Analyze", type="primary", key="transfer_btn_audit_1"):
@@ -179,7 +223,7 @@ elif st.session_state.current_page == "Image Processing":
 
         if img_file2 and 'processed_buffer_img2' in st.session_state:
             st.subheader("Image 2")
-            st.image(st.session_state.processed_buffer_img2, use_container_width=True)
+            st.image(st.session_state.processed_buffer_img2, width='stretch')
 
 # ----------------- Pagina: AI Comparison -----------------
 elif st.session_state.current_page == "AI Comparison between 2 images":
@@ -188,3 +232,64 @@ elif st.session_state.current_page == "AI Comparison between 2 images":
 # ----------------- Pagina: Research Audit -----------------
 elif st.session_state.current_page == "Research Audit":
     render_research_audit_page(model)
+
+# elif st.session_state.current_page == "Explainability":
+#     st.header("🔍 Attention Rollout Heatmap")
+#     st.markdown("Visualize which regions of the retinal image the AI model focuses on during analysis.")
+#     st.write("")
+    
+#     col1, col2 = st.columns([1, 1])
+    
+#     with col1:
+#         uploaded_file = st.file_uploader(
+#             "📤 Upload Retinal Image",
+#             type=["png", "jpg", "jpeg"],
+#             key="heatmap_upload",
+#             help="Upload an OCT or fundus image for attention analysis"
+#         )
+        
+#         if uploaded_file:
+#             st.image(uploaded_file, caption="Original Image", use_container_width=True)
+    
+#     with col2:
+#         clinical_context = st.text_area(
+#             "📝 Clinical Context (Optional)",
+#             key="heatmap_context",
+#             placeholder="Enter any relevant clinical information...",
+#             height=150
+#         )
+        
+#         st.write("")
+#         generate_btn = st.button(
+#             "🎨 Generate Attention Heatmap",
+#             type="primary",
+#             use_container_width=True
+#         )
+    
+#     if generate_btn:
+#         if uploaded_file is None:
+#             st.warning("⚠️ Please upload an image first.")
+#         else:
+#             with st.spinner("🔄 Generating attention heatmap..."):
+#                 try:
+#                     response = requests.post(
+#                         "http://localhost:8000/attention-heatmap",
+#                         files={"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)},
+#                         data={"context": clinical_context}
+#                     )
+                    
+#                     if response.status_code == 200:
+#                         st.success("✅ Heatmap generated successfully!")
+#                         st.divider()
+#                         st.subheader("Attention Heatmap Result")
+#                         st.image(response.content, caption="Model Attention Heatmap", use_container_width=True)
+#                         st.info("💡 Warmer colors (red/yellow) indicate regions the model focused on most.")
+#                     else:
+#                         error_detail = response.json().get("detail", "Unknown error")
+#                         st.error(f"❌ Failed to generate heatmap: {error_detail}")
+#                 except Exception as e:
+#                     st.error(f"❌ Error connecting to backend: {str(e)}")
+
+# elif st.session_state.current_page == "Case Search":
+#     render_case_search_page()
+

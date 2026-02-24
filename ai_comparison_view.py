@@ -26,7 +26,7 @@ def render_comparison_page(model=None): # Pastram argumentul pentru compatibilit
         img1 = None
         if img1_file is not None:
             img1 = helpers.load_image(img1_file)
-            st.image(img1, caption="Image A", use_container_width=True)
+            st.image(img1, caption="Image A", width='stretch')
 
     with col2:
         st.markdown("### Image B")
@@ -34,7 +34,7 @@ def render_comparison_page(model=None): # Pastram argumentul pentru compatibilit
         img2 = None
         if img2_file is not None:
             img2 = helpers.load_image(img2_file)
-            st.image(img2, caption="Image B", use_container_width=True)
+            st.image(img2, caption="Image B", width='stretch')
 
     st.divider()
     
@@ -43,7 +43,7 @@ def render_comparison_page(model=None): # Pastram argumentul pentru compatibilit
         value="Compare these two retinal images carefully. What are the key pathological differences between them?"
     )
     
-    if st.button("Generate Comparison Report", type="primary", use_container_width=True):
+    if st.button("Generate Comparison Report", type="primary", width='stretch'):
         if img1 is None or img2 is None:
             st.warning("Please upload both Image A and Image B before generating the comparison.")
         else:
